@@ -55,6 +55,7 @@
                 <li><a class="vt-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Home"?"active":"")" asp-controller="Home" asp-action="Index">🏠 Trang Chủ</a></li>
                 <li><a class="vt-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Tours"?"active":"")" asp-controller="Tours" asp-action="Index">🗺️ Quản Lý Tour</a></li>
                 <li><a class="vt-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Bookings"?"active":"")" asp-controller="Bookings" asp-action="Index">📋 Đặt Tour</a></li>
+                <li><a class="vt-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Admin"?"active":"")" asp-controller="Admin" asp-action="Dashboard">📊 Báo Cáo</a></li>
             </ul>
             <a class="vt-btn-cta" asp-controller="Bookings" asp-action="Create">✈️ Đặt Ngay</a>
             <button class="vt-nav-toggle" id="navToggle" onclick="this.closest('.vt-navbar').classList.toggle('open')">
@@ -106,6 +107,7 @@
                         <li><a asp-controller="Tours" asp-action="Index">Quản lý Tour</a></li>
                         <li><a asp-controller="Bookings" asp-action="Index">Đặt Tour</a></li>
                         <li><a asp-controller="Bookings" asp-action="Create">Đặt mới</a></li>
+                        <li><a asp-controller="Admin" asp-action="Dashboard">Báo cáo doanh thu</a></li>
                         <li><a asp-controller="Tours" asp-action="Create">Thêm Tour</a></li>
                     </ul>
                 </div>

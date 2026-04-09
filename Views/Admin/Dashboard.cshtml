@@ -1,0 +1,130 @@
+@model webtour.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Bảng Điều Khiển Quản Trị";
+}
+
+<div class="vt-section" style="padding-bottom:100px">
+    <div class="vt-container">
+        <div class="vt-breadcrumb">
+            <a asp-controller="Home" asp-action="Index">🏠 Trang chủ</a>
+            <span class="sep">›</span>
+            <span class="current">Báo Cáo Doanh Thu</span>
+        </div>
+
+        <div class="vt-page-header">
+            <div>
+                <h1 class="vt-page-title">📊 Dashboard Quản Trị</h1>
+                <p class="vt-page-sub">Dữ liệu thống kê thời gian thực từ Oracle View <code>V_TOUR_REVENUE</code></p>
+            </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="vt-dashboard-stats">
+            <div class="stat-card">
+                <div class="icon">🎟️</div>
+                <div class="data">
+                    <div class="val">@Model.TotalSystemBookings</div>
+                    <div class="lbl">Tổng Đơn Đặt</div>
+                </div>
+            </div>
+            <div class="stat-card accent">
+                <div class="icon">💰</div>
+                <div class="data">
+                    <div class="val">@Model.TotalRevenue.ToString("N0")đ</div>
+                    <div class="lbl">Tổng Doanh Thu</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="icon">🗺️</div>
+                <div class="data">
+                    <div class="val">@Model.TourRevenues.Count</div>
+                    <div class="lbl">Tuyến Tour Đang Chạy</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Revenue Table -->
+        <div class="vt-card animate-fade-up" style="margin-top:30px; overflow: hidden">
+            <div style="padding:20px; border-bottom:1px solid rgba(255,255,255,0.05); background:rgba(255,255,255,0.02)">
+                <h3 style="margin:0; font-size:18px; color:var(--text-main)">📱 Chi Tiết Doanh Thu Theo Tuyến</h3>
+            </div>
+            <div style="overflow-x:auto">
+                <table class="vt-table">
+                    <thead>
+                        <tr>
+                            <th style="width:60px">#</th>
+                            <th>Tên Tuyến Tour</th>
+                            <th style="text-align:center">Lượt Đặt</th>
+                            <th style="text-align:center">Tổng Khách</th>
+                            <th style="text-align:right">Doanh Thu</th>
+                            <th style="text-align:right">Gần Nhất</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var r in Model.TourRevenues)
+                        {
+                            <tr>
+                                <td style="color:var(--text-muted)">@r.TourId</td>
+                                <td style="font-weight:600; color:var(--cyan)">@r.Destination</td>
+                                <td style="text-align:center">
+                                    <span class="vt-badge">@r.TotalBookings</span>
+                                </td>
+                                <td style="text-align:center">@r.TotalGuests</td>
+                                <td style="text-align:right; font-weight:700; color:var(--text-main)">@r.Revenue.ToString("N0")đ</td>
+                                <td style="text-align:right; font-size:12px; color:var(--text-muted)">
+                                    @(r.LatestBookingDate?.ToString("dd/MM HH:mm") ?? "N/A")
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .vt-dashboard-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 20px;
+    }
+    .stat-card {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 16px;
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        backdrop-filter: blur(10px);
+    }
+    .stat-card.accent {
+        background: linear-gradient(135deg, rgba(8,145,178,0.2), rgba(16,185,129,0.1));
+        border: 1px solid rgba(8,145,178,0.3);
+    }
+    .stat-card .icon {
+        font-size: 40px;
+        background: rgba(255,255,255,0.05);
+        width: 70px;
+        height: 70px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:14px;
+    }
+    .stat-card .val {
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--text-main);
+        line-height: 1.2;
+    }
+    .stat-card .lbl {
+        color: var(--text-muted);
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+</style>

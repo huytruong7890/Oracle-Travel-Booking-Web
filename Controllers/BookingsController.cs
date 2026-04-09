@@ -96,8 +96,18 @@ namespace webtour.Controllers
                 try
                 {
                     booking.BookingDate = DateTime.Now;
-                    booking.TotalPrice = booking.IsGroup == 1 ? tour.PriceGroup * booking.NumberOfPeople : tour.PriceIndividual * booking.NumberOfPeople;
-                    Console.WriteLine($"TotalPrice calculated: {booking.TotalPrice}");
+                    
+                    // GỌI STORED PROCEDURE TRÊN ORACLE ĐỂ TÍNH GIÁ (MASTER LEVEL)
+                    var pTourId = new Oracle.ManagedDataAccess.Client.OracleParameter("p_tour_id", booking.TourId);
+                    var pPeople = new Oracle.ManagedDataAccess.Client.OracleParameter("p_people", booking.NumberOfPeople);
+                    var pIsGroup = new Oracle.ManagedDataAccess.Client.OracleParameter("p_is_group", booking.IsGroup);
+                    var pTotal = new Oracle.ManagedDataAccess.Client.OracleParameter("p_total_price", Oracle.ManagedDataAccess.Client.OracleDbType.Decimal, System.Data.ParameterDirection.Output);
+                    
+                    await _context.Database.ExecuteSqlRawAsync("BEGIN PROC_CALCULATE_PRICE(:p_tour_id, :p_people, :p_is_group, :p_total_price); END;", 
+                        pTourId, pPeople, pIsGroup, pTotal);
+                    
+                    booking.TotalPrice = (decimal)(Oracle.ManagedDataAccess.Types.OracleDecimal)pTotal.Value;
+                    Console.WriteLine($"TotalPrice calculated by Oracle SP: {booking.TotalPrice}");
                     
                     _context.Add(booking);
                     await _context.SaveChangesAsync();
@@ -186,7 +196,17 @@ namespace webtour.Controllers
             {
                 try
                 {
-                    booking.TotalPrice = booking.IsGroup == 1 ? tour.PriceGroup * booking.NumberOfPeople : tour.PriceIndividual * booking.NumberOfPeople;
+                    // GỌI STORED PROCEDURE TRÊN ORACLE ĐỂ TÍNH GIÁ (MASTER LEVEL)
+                    var pTourId = new Oracle.ManagedDataAccess.Client.OracleParameter("p_tour_id", booking.TourId);
+                    var pPeople = new Oracle.ManagedDataAccess.Client.OracleParameter("p_people", booking.NumberOfPeople);
+                    var pIsGroup = new Oracle.ManagedDataAccess.Client.OracleParameter("p_is_group", booking.IsGroup);
+                    var pTotal = new Oracle.ManagedDataAccess.Client.OracleParameter("p_total_price", Oracle.ManagedDataAccess.Client.OracleDbType.Decimal, System.Data.ParameterDirection.Output);
+                    
+                    await _context.Database.ExecuteSqlRawAsync("BEGIN PROC_CALCULATE_PRICE(:p_tour_id, :p_people, :p_is_group, :p_total_price); END;", 
+                        pTourId, pPeople, pIsGroup, pTotal);
+                    
+                    booking.TotalPrice = (decimal)(Oracle.ManagedDataAccess.Types.OracleDecimal)pTotal.Value;
+
                     _context.Update(booking);
                     await _context.SaveChangesAsync();
                 }

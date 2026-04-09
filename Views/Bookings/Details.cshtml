@@ -93,7 +93,8 @@
 
                 <div style="display:flex;gap:12px;margin-top:28px">
                     <a asp-action="Edit" asp-route-id="@Model.Id" class="vt-btn vt-btn-outline">✏️ Chỉnh Sửa</a>
-                    <a asp-action="Delete" asp-route-id="@Model.Id" class="vt-btn vt-btn-danger">🗑️ Xóa</a>
+                    <button onclick="window.print()" class="vt-btn vt-btn-primary">🖨️ In Vé / Hóa Đơn</button>
+                    <a asp-action="Delete" asp-route-id="@Model.Id" class="vt-btn vt-btn-danger">🗑️</a>
                     <a asp-action="Index" class="vt-btn vt-btn-outline" style="margin-left:auto">← Quay Lại</a>
                 </div>
             </div>
@@ -125,3 +126,87 @@
         </div>
     </div>
 </div>
+
+<style>
+    @@media print {
+        /* Ẩn các thành phần không cần thiết khi in */
+        .vt-navbar, .vt-footer, .vt-breadcrumb, .vt-btn, .oracle-topbar, .vt-oracle-panel {
+            display: none !important;
+        }
+
+        body {
+            background: white !important;
+            color: black !important;
+            padding: 0;
+            margin: 0;
+        }
+
+        .vt-main {
+            padding: 0 !important;
+        }
+
+        .vt-section {
+            padding: 0 !important;
+        }
+
+        .vt-container {
+            width: 100% !important;
+            max-width: 100% !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .vt-details-grid {
+            display: block !important;
+        }
+
+        .vt-details-card {
+            background: white !important;
+            border: 2px solid #333 !important;
+            box-shadow: none !important;
+            color: black !important;
+            padding: 40px !important;
+            border-radius: 0 !important;
+        }
+
+        .vt-page-title, h1, h2, h3, .val, .key, .vt-detail-key, .vt-detail-val, .vt-badge {
+            color: black !important;
+            background: none !important;
+            border: none !important;
+        }
+
+        /* Tạo tem vé chuyên nghiệp */
+        .vt-details-card::before {
+            content: "VIETTOUR ORACLE SYSTEM - VÉ DU LỊCH CHÍNH THỨC";
+            display: block;
+            text-align: center;
+            font-weight: 800;
+            font-size: 24px;
+            margin-bottom: 30px;
+            border-bottom: 2px dashed #000;
+            padding-bottom: 15px;
+        }
+
+        .vt-details-card::after {
+            content: "Mã xác thực: ORCL-@Model.Id-@Model.BookingDate.Ticks \A Cảm ơn quý khách đã tin dùng dịch vụ của VietTour. Chúc quý khách một chuyến đi vui vẻ!";
+            display: block;
+            white-space: pre-wrap;
+            text-align: center;
+            margin-top: 40px;
+            font-style: italic;
+            font-size: 13px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .vt-badge {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .vt-green-light {
+            color: black !important;
+            font-size: 30px !important;
+        }
+    }
+</style>
