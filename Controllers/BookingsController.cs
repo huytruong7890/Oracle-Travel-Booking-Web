@@ -111,15 +111,27 @@ namespace webtour.Controllers
                     
                     _context.Add(booking);
                     await _context.SaveChangesAsync();
-                    
-                    Console.WriteLine("✓ Booking saved successfully!");
                     return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateException ex) when (ex.InnerException is Oracle.ManagedDataAccess.Client.OracleException oex)
+                {
+                    // Catch custom RAISE_APPLICATION_ERROR from Oracle (codes -20001, -20002, etc.)
+                    if (oex.Number >= 20000 && oex.Number <= 20999)
+                    {
+                        var msg = oex.Message;
+                        // Clean up the message (Oracle usually appends ORA-XXXXX header)
+                        int start = msg.IndexOf(":");
+                        if (start != -1) msg = msg.Substring(start + 1).Split('\n')[0].Trim();
+                        ModelState.AddModelError(string.Empty, $"⚠️ Oracle DB: {msg}");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Lỗi Database: " + oex.Message);
+                    }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"✗ Database Error: {ex.Message}");
-                    Console.WriteLine($"Stack: {ex.StackTrace}");
-                    ModelState.AddModelError("", $"Lỗi lưu dữ liệu: {ex.Message}");
+                    ModelState.AddModelError(string.Empty, "Đã xảy ra lỗi hệ thống: " + ex.Message);
                 }
             }
             else
