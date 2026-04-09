@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] – VietTour Oracle</title>
+    <meta name="description" content="Hệ thống đặt tour du lịch Việt Nam kết nối Oracle Database – an toàn, nhanh chóng, tin cậy." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;1,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/viettour.css" asp-append-version="true" />
+</head>
+<body>
+    <!-- Oracle Status Bar -->
+    <div class="oracle-topbar">
+        <div class="oracle-topbar-inner">
+            <div class="oracle-conn-status">
+                <span class="oracle-pulse-dot"></span>
+                <span class="oracle-conn-text">Oracle 21c XE · VIETTOUR_DB · SSL/TLS</span>
+            </div>
+            <div class="oracle-info-right">
+                <span>🛡️ Kết nối bảo mật</span>
+                <span class="sep">|</span>
+                <span>📞 1800-VIETTOUR</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="vt-navbar" id="vtNavbar">
+        <div class="vt-nav-container">
+            <a class="vt-logo" asp-controller="Home" asp-action="Index">
+                <div class="vt-logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none">
+                        <circle cx="20" cy="20" r="20" fill="url(#lg1)"/>
+                        <path d="M10 28 Q20 12 30 28" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                        <path d="M13 22 Q20 16 27 22" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                        <circle cx="20" cy="17" r="3" fill="white"/>
+                        <defs>
+                            <linearGradient id="lg1" x1="0" y1="0" x2="40" y2="40">
+                                <stop offset="0%" stop-color="#0891b2"/>
+                                <stop offset="100%" stop-color="#059669"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="vt-logo-text">
+                    <span class="vt-logo-main">VietTour</span>
+                    <span class="vt-logo-sub">Oracle System</span>
+                </div>
+            </a>
+            <ul class="vt-nav-links">
+                <li><a class="vt-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Home"?"active":"")" asp-controller="Home" asp-action="Index">🏠 Trang Chủ</a></li>
+                <li><a class="vt-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Tours"?"active":"")" asp-controller="Tours" asp-action="Index">🗺️ Quản Lý Tour</a></li>
+                <li><a class="vt-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Bookings"?"active":"")" asp-controller="Bookings" asp-action="Index">📋 Đặt Tour</a></li>
+            </ul>
+            <a class="vt-btn-cta" asp-controller="Bookings" asp-action="Create">✈️ Đặt Ngay</a>
+            <button class="vt-nav-toggle" id="navToggle" onclick="this.closest('.vt-navbar').classList.toggle('open')">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="vt-main">
+        @RenderBody()
+    </main>
+
+    <footer class="vt-footer">
+        <div class="vt-footer-inner">
+            <div class="vt-footer-grid">
+                <div class="vt-footer-brand">
+                    <div class="vt-logo" style="margin-bottom:16px">
+                        <div class="vt-logo-icon">
+                            <svg viewBox="0 0 40 40" fill="none">
+                                <circle cx="20" cy="20" r="20" fill="url(#lg2)"/>
+                                <path d="M10 28 Q20 12 30 28" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                                <path d="M13 22 Q20 16 27 22" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                                <circle cx="20" cy="17" r="3" fill="white"/>
+                                <defs>
+                                    <linearGradient id="lg2" x1="0" y1="0" x2="40" y2="40">
+                                        <stop offset="0%" stop-color="#0891b2"/>
+                                        <stop offset="100%" stop-color="#059669"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="vt-logo-text">
+                            <span class="vt-logo-main">VietTour</span>
+                            <span class="vt-logo-sub">Oracle System</span>
+                        </div>
+                    </div>
+                    <p class="vt-footer-desc">Hệ thống đặt tour du lịch Việt Nam hàng đầu, kết nối Oracle Database đảm bảo trải nghiệm tốt nhất.</p>
+                </div>
+                <div class="vt-footer-col">
+                    <h4>Điểm Đến</h4>
+                    <ul>
+                        <li>Hạ Long Bay</li><li>Đà Nẵng</li><li>Hội An</li>
+                        <li>Sa Pa</li><li>Phú Quốc</li><li>Nha Trang</li>
+                    </ul>
+                </div>
+                <div class="vt-footer-col">
+                    <h4>Hệ Thống</h4>
+                    <ul>
+                        <li><a asp-controller="Tours" asp-action="Index">Quản lý Tour</a></li>
+                        <li><a asp-controller="Bookings" asp-action="Index">Đặt Tour</a></li>
+                        <li><a asp-controller="Bookings" asp-action="Create">Đặt mới</a></li>
+                        <li><a asp-controller="Tours" asp-action="Create">Thêm Tour</a></li>
+                    </ul>
+                </div>
+                <div class="vt-footer-col">
+                    <h4>Liên Hệ</h4>
+                    <ul>
+                        <li>📞 1800-VIETTOUR</li>
+                        <li>✉️ support@viettour.vn</li>
+                        <li>🏢 72 Lê Thánh Tôn, Q.1, HCM</li>
+                        <li>⏰ 7:00 – 22:00 hàng ngày</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="vt-footer-bottom">
+                <p>© 2026 VietTour Oracle System · Powered by Oracle Database 21c XE</p>
+                <p>🛡️ Kết nối bảo mật SSL · GPKD: 0123456789</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('vtNavbar');
+            if (nav) nav.classList.toggle('scrolled', window.scrollY > 30);
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

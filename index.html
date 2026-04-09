@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VietTour Oracle – Đặt Tour Du Lịch Việt Nam</title>
+  <meta name="description" content="Khám phá và đặt tour du lịch Việt Nam tốt nhất. Ha Long Bay, Đà Nẵng, Hội An, Sa Pa – trải nghiệm không thể quên. Hệ thống kết nối Oracle Database."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- Oracle Connection Status Bar -->
+  <div class="oracle-bar" id="oracleBar">
+    <div class="oracle-bar-inner">
+      <div class="oracle-status" id="oracleStatus">
+        <span class="oracle-dot pulse" id="oracleDot"></span>
+        <span id="oracleStatusText">Đang kết nối Oracle Database...</span>
+      </div>
+      <div class="oracle-info">
+        <span class="oracle-icon">🛡️</span>
+        <span>Oracle 21c XE | Schema: VIETTOUR_DB | Kết nối an toàn SSL/TLS</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="20" fill="url(#logoGrad)"/>
+            <path d="M10 28 Q20 12 30 28" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M13 22 Q20 16 27 22" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <circle cx="20" cy="18" r="3" fill="white"/>
+            <defs>
+              <linearGradient id="logoGrad" x1="0" y1="0" x2="40" y2="40">
+                <stop offset="0%" stop-color="#0891b2"/>
+                <stop offset="100%" stop-color="#059669"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div>
+          <span class="logo-main">VietTour</span>
+          <span class="logo-sub">Oracle System</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link active">Trang Chủ</a></li>
+        <li><a href="#destinations" class="nav-link">Điểm Đến</a></li>
+        <li><a href="#tours" class="nav-link">Tours</a></li>
+        <li><a href="#booking" class="nav-link">Đặt Vé</a></li>
+        <li><a href="#db-panel" class="nav-link" id="dbPanelBtn">🗄️ DB Console</a></li>
+      </ul>
+      <button class="btn-primary nav-cta" onclick="openBookingModal()">Đặt Ngay</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="hero-overlay"></div>
+      <div class="hero-particles" id="particles"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Kết nối Oracle · Hơn 10,000 tour đã đặt thành công
+      </div>
+      <h1 class="hero-title">
+        Khám Phá <span class="gradient-text">Việt Nam</span><br/>
+        Theo Cách Của Bạn
+      </h1>
+      <p class="hero-subtitle">
+        Hệ thống đặt tour thông minh kết nối Oracle Database – đảm bảo dữ liệu an toàn, 
+        tìm kiếm tour nhanh chóng và trải nghiệm du lịch tuyệt vời nhất.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num" data-target="150">0</span><span class="stat-unit">+</span>
+          <span class="stat-label">Điểm đến</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="50000">0</span><span class="stat-unit">+</span>
+          <span class="stat-label">Khách hàng</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="98">0</span><span class="stat-unit">%</span>
+          <span class="stat-label">Hài lòng</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Box -->
+    <div class="search-box" id="booking">
+      <div class="search-tabs">
+        <button class="search-tab active" onclick="switchTab('tour', this)">🗺️ Tour</button>
+        <button class="search-tab" onclick="switchTab('hotel', this)">🏨 Khách sạn</button>
+        <button class="search-tab" onclick="switchTab('flight', this)">✈️ Vé máy bay</button>
+      </div>
+      <div class="search-form" id="tourForm">
+        <div class="search-grid">
+          <div class="search-field">
+            <label>📍 Điểm đến</label>
+            <select id="destination" class="search-input">
+              <option value="">Chọn điểm đến...</option>
+              <option value="halong">Hạ Long Bay</option>
+              <option value="danang">Đà Nẵng</option>
+              <option value="hoian">Hội An</option>
+              <option value="sapa">Sa Pa</option>
+              <option value="hanoi">Hà Nội</option>
+              <option value="hcm">TP. Hồ Chí Minh</option>
+              <option value="phuquoc">Phú Quốc</option>
+              <option value="nhatrang">Nha Trang</option>
+            </select>
+          </div>
+          <div class="search-field">
+            <label>📅 Ngày khởi hành</label>
+            <input type="date" id="departDate" class="search-input" />
+          </div>
+          <div class="search-field">
+            <label>🗓️ Số ngày</label>
+            <select id="duration" class="search-input">
+              <option value="">Chọn thời gian...</option>
+              <option value="2N1D">2 Ngày 1 Đêm</option>
+              <option value="3N2D">3 Ngày 2 Đêm</option>
+              <option value="4N3D">4 Ngày 3 Đêm</option>
+              <option value="5N4D">5 Ngày 4 Đêm</option>
+              <option value="7N6D">7 Ngày 6 Đêm</option>
+            </select>
+          </div>
+          <div class="search-field">
+            <label>👥 Số khách</label>
+            <div class="guest-input">
+              <button onclick="changeGuests(-1)" class="guest-btn">−</button>
+              <input type="number" id="guests" class="search-input guest-num" value="2" min="1" max="20"/>
+              <button onclick="changeGuests(1)" class="guest-btn">+</button>
+            </div>
+          </div>
+        </div>
+        <button class="btn-search" onclick="searchTours()">
+          <span>🔍 Tìm Tour Ngay</span>
+          <div class="search-btn-glow"></div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Destinations Section -->
+  <section class="section destinations" id="destinations">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">🌏 Điểm nổi bật</span>
+        <h2 class="section-title">Điểm Đến <span class="gradient-text">Tuyệt Vời</span></h2>
+        <p class="section-sub">Khám phá những điểm đến đẹp nhất Việt Nam được hàng nghìn du khách lựa chọn mỗi năm</p>
+      </div>
+      <div class="destinations-grid">
+        <div class="dest-card featured" onclick="openBookingModal('halong')">
+          <div class="dest-img-wrap">
+            <img src="assets/halong_bay.png" alt="Hạ Long Bay" class="dest-img" loading="lazy"/>
+            <div class="dest-overlay"></div>
+            <div class="dest-badge-tag">⭐ Phổ biến nhất</div>
+            <div class="dest-price-tag">Từ <strong>1,290,000đ</strong>/người</div>
+          </div>
+          <div class="dest-info">
+            <div class="dest-location"><span>📍</span> Quảng Ninh, VN</div>
+            <h3 class="dest-name">Vịnh Hạ Long</h3>
+            <p class="dest-desc">Di sản thiên nhiên thế giới với hàng nghìn đảo đá vôi hùng vĩ trên vùng biển xanh ngọc bích</p>
+            <div class="dest-meta">
+              <div class="dest-rating">
+                ★★★★★ <span>4.9 (2,847 đánh giá)</span>
+              </div>
+              <button class="dest-book-btn">Đặt ngay →</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="dest-card" onclick="openBookingModal('danang')">
+          <div class="dest-img-wrap">
+            <img src="assets/danang_beach.png" alt="Đà Nẵng" class="dest-img" loading="lazy"/>
+            <div class="dest-overlay"></div>
+            <div class="dest-price-tag">Từ <strong>890,000đ</strong>/người</div>
+          </div>
+          <div class="dest-info">
+            <div class="dest-location"><span>📍</span> Đà Nẵng, VN</div>
+            <h3 class="dest-name">Đà Nẵng</h3>
+            <p class="dest-desc">Thành phố biển xinh đẹp với Cầu Rồng huyền thoại và bãi biển Mỹ Khê tuyệt đẹp</p>
+            <div class="dest-meta">
+              <div class="dest-rating">★★★★★ <span>4.8 (1,932)</span></div>
+              <button class="dest-book-btn">Đặt ngay →</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="dest-card" onclick="openBookingModal('hoian')">
+          <div class="dest-img-wrap">
+            <img src="assets/hoian_lantern.png" alt="Hội An" class="dest-img" loading="lazy"/>
+            <div class="dest-overlay"></div>
+            <div class="dest-price-tag">Từ <strong>750,000đ</strong>/người</div>
+          </div>
+          <div class="dest-info">
+            <div class="dest-location"><span>📍</span> Quảng Nam, VN</div>
+            <h3 class="dest-name">Hội An</h3>
+            <p class="dest-desc">Phố cổ thơ mộng với những chiếc đèn lồng đầy màu sắc và kiến trúc cổ kính độc đáo</p>
+            <div class="dest-meta">
+              <div class="dest-rating">★★★★★ <span>4.9 (3,104)</span></div>
+              <button class="dest-book-btn">Đặt ngay →</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="dest-card" onclick="openBookingModal('sapa')">
+          <div class="dest-img-wrap">
+            <img src="assets/sapa_terraces.png" alt="Sa Pa" class="dest-img" loading="lazy"/>
+            <div class="dest-overlay"></div>
+            <div class="dest-price-tag">Từ <strong>1,050,000đ</strong>/người</div>
+          </div>
+          <div class="dest-info">
+            <div class="dest-location"><span>📍</span> Lào Cai, VN</div>
+            <h3 class="dest-name">Sa Pa</h3>
+            <p class="dest-desc">Ruộng bậc thang hùng vĩ, khí hậu mát mẻ và nét văn hóa độc đáo của các dân tộc thiểu số</p>
+            <div class="dest-meta">
+              <div class="dest-rating">★★★★☆ <span>4.7 (1,567)</span></div>
+              <button class="dest-book-btn">Đặt ngay →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tour Packages -->
+  <section class="section tours-section" id="tours">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">🎒 Gói tour</span>
+        <h2 class="section-title">Tour <span class="gradient-text">Được Ưa Chuộng</span></h2>
+        <p class="section-sub">Lựa chọn các gói tour phù hợp với nhu cầu và ngân sách của bạn</p>
+      </div>
+      <div class="tours-grid" id="toursGrid">
+        <!-- Tours will be rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Oracle DB Panel -->
+  <section class="section db-panel-section" id="db-panel">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">🗄️ Oracle Database</span>
+        <h2 class="section-title">Bảng Điều Khiển <span class="gradient-text">Database</span></h2>
+        <p class="section-sub">Kết nối trực tiếp Oracle 21c XE – Xem lịch sử đặt tour và trạng thái hệ thống</p>
+      </div>
+      <div class="db-console">
+        <div class="db-header">
+          <div class="db-title">
+            <div class="db-logo">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <ellipse cx="12" cy="8" rx="9" ry="4" stroke="#f97316" stroke-width="2"/>
+                <path d="M3 8 v8 c0 2.2 4 4 9 4s9-1.8 9-4V8" stroke="#f97316" stroke-width="2"/>
+                <path d="M3 12 c0 2.2 4 4 9 4s9-1.8 9-4" stroke="#f97316" stroke-width="2"/>
+              </svg>
+            </div>
+            <span>Oracle 21c XE – VIETTOUR_DB</span>
+          </div>
+          <div class="db-conn-badge" id="dbConnBadge">
+            <span class="conn-dot active"></span>
+            <span id="dbConnText">Đang kết nối...</span>
+          </div>
+        </div>
+        <div class="db-body">
+          <div class="db-sidebar">
+            <div class="db-sidebar-title">📂 Cấu trúc DB</div>
+            <div class="db-tree">
+              <div class="db-tree-item active" onclick="loadTable('bookings')">
+                <span class="tree-icon">📋</span> BOOKINGS
+                <span class="tree-count" id="bookingsCount">0</span>
+              </div>
+              <div class="db-tree-item" onclick="loadTable('customers')">
+                <span class="tree-icon">👥</span> CUSTOMERS
+                <span class="tree-count">847</span>
+              </div>
+              <div class="db-tree-item" onclick="loadTable('tours')">
+                <span class="tree-icon">🗺️</span> TOURS
+                <span class="tree-count">56</span>
+              </div>
+              <div class="db-tree-item" onclick="loadTable('payments')">
+                <span class="tree-icon">💳</span> PAYMENTS
+                <span class="tree-count" id="paymentsCount">0</span>
+              </div>
+            </div>
+            <div class="db-sidebar-title" style="margin-top:20px">⚡ Quick SQL</div>
+            <div class="db-queries">
+              <button class="db-query-btn" onclick="runQuery('SELECT * FROM BOOKINGS ORDER BY CREATED_DATE DESC FETCH FIRST 10 ROWS ONLY')">
+                📋 Recent Bookings
+              </button>
+              <button class="db-query-btn" onclick="runQuery('SELECT COUNT(*), SUM(TOTAL_PRICE) FROM BOOKINGS WHERE STATUS = &apos;CONFIRMED&apos;')">
+                📊 Revenue Summary
+              </button>
+              <button class="db-query-btn" onclick="runQuery('SELECT DESTINATION, COUNT(*) as TOTAL FROM BOOKINGS GROUP BY DESTINATION ORDER BY TOTAL DESC')">
+                🏆 Top Destinations
+              </button>
+            </div>
+          </div>
+          <div class="db-main">
+            <div class="db-query-bar">
+              <span class="query-prompt">SQL&gt;</span>
+              <input type="text" id="sqlInput" class="sql-input" placeholder="Nhập câu lệnh SQL Oracle..." value="SELECT * FROM BOOKINGS ORDER BY CREATED_DATE DESC"/>
+              <button class="btn-run-sql" onclick="executeSQL()">▶ Run</button>
+            </div>
+            <div class="db-output" id="dbOutput">
+              <div class="db-loading" id="dbLoading">
+                <div class="db-spinner"></div>
+                <span>Đang kết nối Oracle Database...</span>
+              </div>
+            </div>
+            <div class="db-status-bar">
+              <span id="dbRowCount">0 rows</span>
+              <span id="dbExecTime">–</span>
+              <span id="dbSessionInfo">Session: ora_viettour_web</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us Section -->
+  <section class="section why-us">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-content">
+          <span class="section-badge">💎 Tại sao chọn chúng tôi</span>
+          <h2 class="section-title">Hệ Thống <span class="gradient-text">Tin Cậy</span><br/>Với Oracle</h2>
+          <p class="section-sub" style="text-align:left">Xây dựng trên nền tảng Oracle Database – đảm bảo độ tin cậy cao, xử lý hàng triệu giao dịch mỗi ngày với tốc độ cực nhanh.</p>
+          <div class="features-list">
+            <div class="feature-item">
+              <div class="feature-icon">🔐</div>
+              <div>
+                <strong>Bảo mật Oracle SSL/TLS</strong>
+                <p>Dữ liệu khách hàng được mã hóa và bảo vệ theo chuẩn Oracle Security</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">⚡</div>
+              <div>
+                <strong>Xử lý nhanh 99.9% uptime</strong>
+                <p>Oracle RAC đảm bảo hệ thống luôn hoạt động, không downtime</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">📊</div>
+              <div>
+                <strong>Báo cáo & Analytics realtime</strong>
+                <p>Oracle Analytics để theo dõi xu hướng du lịch và tối ưu giá tour</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🔄</div>
+              <div>
+                <strong>Backup tự động mỗi 6 giờ</strong>
+                <p>Oracle RMAN backup đảm bảo dữ liệu không bao giờ bị mất</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="why-visual">
+          <div class="oracle-card">
+            <div class="oracle-card-header">
+              <div class="oracle-logo-full">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <ellipse cx="16" cy="10" rx="12" ry="5" stroke="#f97316" stroke-width="2.5"/>
+                  <path d="M4 10 v12 c0 2.8 5.4 5 12 5s12-2.2 12-5V10" stroke="#f97316" stroke-width="2.5"/>
+                  <path d="M4 16 c0 2.8 5.4 5 12 5s12-2.2 12-5" stroke="#f97316" stroke-width="2.5"/>
+                </svg>
+              </div>
+              <div>
+                <div class="oracle-card-title">Oracle 21c Express Edition</div>
+                <div class="oracle-card-sub">VIETTOUR Production Instance</div>
+              </div>
+            </div>
+            <div class="oracle-metrics">
+              <div class="metric-row">
+                <span class="metric-label">CPU Usage</span>
+                <div class="metric-bar"><div class="metric-fill" style="width:32%" data-width="32%"></div></div>
+                <span class="metric-val">32%</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-label">Memory</span>
+                <div class="metric-bar"><div class="metric-fill" style="width:61%"></div></div>
+                <span class="metric-val">61%</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-label">Sessions</span>
+                <div class="metric-bar"><div class="metric-fill" style="width:18%"></div></div>
+                <span class="metric-val">18/100</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-label">Storage</span>
+                <div class="metric-bar"><div class="metric-fill" style="width:45%"></div></div>
+                <span class="metric-val">4.5 GB</span>
+              </div>
+            </div>
+            <div class="oracle-stats-grid">
+              <div class="oracle-stat">
+                <span class="os-num">12ms</span>
+                <span class="os-label">Avg Query Time</span>
+              </div>
+              <div class="oracle-stat">
+                <span class="os-num">47K</span>
+                <span class="os-label">Transactions/hr</span>
+              </div>
+              <div class="oracle-stat">
+                <span class="os-num">99.9%</span>
+                <span class="os-label">Uptime</span>
+              </div>
+              <div class="oracle-stat">
+                <span class="os-num">256-bit</span>
+                <span class="os-label">AES Encryption</span>
+              </div>
+            </div>
+            <div class="oracle-log" id="oracleLog">
+              <div class="log-line"><span class="log-time">18:45:02</span> INFO – Connection pool: 18/100 active</div>
+              <div class="log-line"><span class="log-time">18:45:15</span> INSERT – BOOKINGS (ID: TRB2026001)</div>
+              <div class="log-line success"><span class="log-time">18:45:15</span> COMMIT – Transaction completed [OK]</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo" style="margin-bottom:16px">
+            <div class="logo-icon">
+              <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="url(#lg2)"/>
+              <path d="M10 28 Q20 12 30 28" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <path d="M13 22 Q20 16 27 22" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <circle cx="20" cy="18" r="3" fill="white"/>
+              <defs><linearGradient id="lg2" x1="0" y1="0" x2="40" y2="40"><stop offset="0%" stop-color="#0891b2"/><stop offset="100%" stop-color="#059669"/></linearGradient></defs>
+              </svg>
+            </div>
+            <div><span class="logo-main">VietTour</span><span class="logo-sub">Oracle System</span></div>
+          </div>
+          <p style="color:#94a3b8;font-size:14px;line-height:1.7">Hệ thống đặt tour du lịch Việt Nam hàng đầu, kết nối Oracle Database để đảm bảo trải nghiệm tốt nhất cho mọi khách hàng.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn">📘</a>
+            <a href="#" class="social-btn">📸</a>
+            <a href="#" class="social-btn">🐦</a>
+            <a href="#" class="social-btn">▶️</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Điểm đến</h4>
+          <ul>
+            <li><a href="#">Hạ Long Bay</a></li>
+            <li><a href="#">Đà Nẵng</a></li>
+            <li><a href="#">Hội An</a></li>
+            <li><a href="#">Sa Pa</a></li>
+            <li><a href="#">Phú Quốc</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Hỗ trợ</h4>
+          <ul>
+            <li><a href="#">Hướng dẫn đặt tour</a></li>
+            <li><a href="#">Chính sách hoàn tiền</a></li>
+            <li><a href="#">Điều khoản sử dụng</a></li>
+            <li><a href="#">Bảo mật thông tin</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Liên hệ</h4>
+          <ul>
+            <li>📞 1800-VIETTOUR</li>
+            <li>✉️ support@viettour.vn</li>
+            <li>🏢 72 Lê Thánh Tôn, Q.1, TP.HCM</li>
+            <li>⏰ 7:00 – 22:00 hàng ngày</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 VietTour Oracle System. Powered by Oracle Database 21c XE.</p>
+        <p style="color:#059669">🛡️ Kết nối bảo mật SSL · GPKD: 0123456789 · <a href="#" style="color:#059669">Chính sách bảo mật</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Booking Modal -->
+  <div class="modal-overlay" id="bookingModal" onclick="closeModalOutside(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeBookingModal()">✕</button>
+      <div class="modal-header">
+        <div class="modal-icon">🎒</div>
+        <h2 class="modal-title">Đặt Tour Du Lịch</h2>
+        <p class="modal-sub">Điền thông tin để hoàn tất đặt tour</p>
+      </div>
+      <div class="modal-steps">
+        <div class="step active" id="step1Ind">1 Thông tin</div>
+        <div class="step-arrow">→</div>
+        <div class="step" id="step2Ind">2 Thanh toán</div>
+        <div class="step-arrow">→</div>
+        <div class="step" id="step3Ind">3 Xác nhận</div>
+      </div>
+      <!-- Step 1 -->
+      <div class="modal-step" id="modalStep1">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Họ và tên *</label>
+            <input type="text" id="bookName" placeholder="Nguyễn Văn A" class="form-input"/>
+          </div>
+          <div class="form-group">
+            <label>Số điện thoại *</label>
+            <input type="tel" id="bookPhone" placeholder="0901 234 567" class="form-input"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" id="bookEmail" placeholder="email@example.com" class="form-input"/>
+          </div>
+          <div class="form-group">
+            <label>CCCD / Hộ chiếu</label>
+            <input type="text" id="bookIdNum" placeholder="0123456789" class="form-input"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Điểm đến *</label>
+            <select id="bookDest" class="form-input">
+              <option value="halong">🏔️ Hạ Long Bay – 1,290,000đ/người</option>
+              <option value="danang">🌊 Đà Nẵng – 890,000đ/người</option>
+              <option value="hoian">🏮 Hội An – 750,000đ/người</option>
+              <option value="sapa">🌿 Sa Pa – 1,050,000đ/người</option>
+              <option value="phuquoc">🏝️ Phú Quốc – 1,490,000đ/người</option>
+              <option value="nhatrang">🌺 Nha Trang – 980,000đ/người</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Gói tour</label>
+            <select id="bookPackage" class="form-input">
+              <option value="2N1D">2 Ngày 1 Đêm – Tiêu chuẩn</option>
+              <option value="3N2D">3 Ngày 2 Đêm – Cao cấp</option>
+              <option value="4N3D">4 Ngày 3 Đêm – Deluxe</option>
+              <option value="5N4D">5 Ngày 4 Đêm – VIP</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Ngày khởi hành *</label>
+            <input type="date" id="bookDate" class="form-input"/>
+          </div>
+          <div class="form-group">
+            <label>Số lượng khách *</label>
+            <input type="number" id="bookGuests" value="2" min="1" max="30" class="form-input"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Ghi chú đặc biệt</label>
+          <textarea id="bookNote" placeholder="Yêu cầu đặc biệt, dị ứng thức ăn, phòng loại..." class="form-input" rows="2"></textarea>
+        </div>
+        <div class="price-estimate" id="priceEstimate">
+          <div class="price-label">💰 Ước tính chi phí</div>
+          <div class="price-val" id="priceVal">2,580,000 đ</div>
+          <div class="price-note">Chưa bao gồm phụ phí. Xác nhận sau khi đặt</div>
+        </div>
+        <button class="btn-primary btn-full" onclick="nextStep(2)">Tiếp theo: Thanh toán →</button>
+      </div>
+      <!-- Step 2 -->
+      <div class="modal-step hidden" id="modalStep2">
+        <div class="payment-methods">
+          <button class="payment-method active" id="pm1" onclick="selectPayment('bank', this)">🏦 Chuyển khoản ngân hàng</button>
+          <button class="payment-method" id="pm2" onclick="selectPayment('card', this)">💳 Thẻ credit/debit</button>
+          <button class="payment-method" id="pm3" onclick="selectPayment('momo', this)">📱 Ví MoMo</button>
+        </div>
+        <div class="payment-detail" id="paymentDetail">
+          <div class="bank-transfer">
+            <div class="bank-info">
+              <div class="bank-logo">🏦</div>
+              <div>
+                <div class="bank-name">Vietcombank</div>
+                <div class="bank-acc">STK: <strong>1234 5678 9012</strong></div>
+                <div class="bank-owner">Chủ TK: CONG TY TNHH VIETTOUR</div>
+              </div>
+            </div>
+            <div class="bank-content">
+              Nội dung CK: <strong id="transferContent">VT-HALONG-2P</strong>
+            </div>
+            <div class="bank-qr">
+              <div class="qr-placeholder">
+                <div class="qr-pattern"></div>
+                <span>QR Code Thanh toán</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="booking-summary">
+          <h4>📋 Tóm tắt đơn đặt</h4>
+          <div id="bookingSummaryContent"></div>
+        </div>
+        <div class="step-buttons">
+          <button class="btn-outline" onclick="nextStep(1)">← Quay lại</button>
+          <button class="btn-primary" onclick="nextStep(3)" id="confirmPayBtn">✓ Xác nhận đặt tour</button>
+        </div>
+      </div>
+      <!-- Step 3 -->
+      <div class="modal-step hidden" id="modalStep3">
+        <div class="booking-success">
+          <div class="success-icon">🎉</div>
+          <h3>Đặt Tour Thành Công!</h3>
+          <div class="booking-code" id="bookingCode">–</div>
+          <p class="success-msg">Thông tin đặt tour đã được <strong>lưu vào Oracle Database</strong>. Chúng tôi sẽ gửi xác nhận qua email trong vòng 30 phút.</p>
+          <div class="oracle-confirm">
+            <span class="oracle-dot pulse"></span>
+            <span id="oracleInsertMsg">Đang lưu vào database...</span>
+          </div>
+          <div class="success-actions">
+            <button class="btn-outline" onclick="closeBookingModal()">Đóng</button>
+            <button class="btn-primary" onclick="viewInDB()">🗄️ Xem trong DB Console</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Results Modal -->
+  <div class="modal-overlay" id="searchModal" onclick="closeSearchOutside(event)">
+    <div class="modal modal-wide">
+      <button class="modal-close" onclick="closeSearchModal()">✕</button>
+      <h2 class="modal-title">🔍 Kết quả tìm kiếm</h2>
+      <div class="oracle-query-info" id="searchQueryInfo"></div>
+      <div id="searchResults"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notifications -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

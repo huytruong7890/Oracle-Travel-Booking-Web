@@ -1,0 +1,137 @@
+@model IEnumerable<webtour.Models.Booking>
+
+@{
+    ViewData["Title"] = "Danh Sách Đặt Tour";
+    int total = Model.Count();
+    decimal revenue = Model.Sum(b => b.TotalPrice);
+    int groups = Model.Count(b => b.IsGroup == 1);
+    int individuals = total - groups;
+}
+
+<div class="vt-section" style="padding-bottom:80px">
+    <div class="vt-container">
+        <div class="vt-breadcrumb">
+            <a asp-controller="Home" asp-action="Index">🏠 Trang chủ</a>
+            <span class="sep">›</span>
+            <span class="current">Danh Sách Đặt Tour</span>
+        </div>
+
+        <!-- Header -->
+        <div class="vt-page-header">
+            <div>
+                <h1 class="vt-page-title">📋 Danh Sách Đặt Tour</h1>
+                <p class="vt-page-sub">Dữ liệu đặt tour được kết nối trực tiếp từ Oracle Database</p>
+            </div>
+            <a asp-action="Create" class="vt-btn vt-btn-primary">✈️ Đặt Tour Mới</a>
+        </div>
+
+        <!-- Stats Strip -->
+        <div class="vt-stats-strip">
+            <div class="vt-stat-chip accent">
+                <div class="sc-num">@total</div>
+                <div class="sc-lbl">Tổng đặt tour</div>
+            </div>
+            <div class="vt-stat-chip">
+                <div class="sc-num" style="color:var(--green-light)">@revenue.ToString("N0")đ</div>
+                <div class="sc-lbl">Tổng doanh thu</div>
+            </div>
+            <div class="vt-stat-chip">
+                <div class="sc-num">@individuals</div>
+                <div class="sc-lbl">Đặt cá nhân</div>
+            </div>
+            <div class="vt-stat-chip">
+                <div class="sc-num" style="color:var(--orange)">@groups</div>
+                <div class="sc-lbl">Đặt đoàn</div>
+            </div>
+        </div>
+
+        @if (!Model.Any())
+        {
+            <div class="vt-empty">
+                <div class="vt-empty-icon">📋</div>
+                <div class="vt-empty-title">Chưa có đặt tour nào</div>
+                <div class="vt-empty-sub">Bắt đầu đặt tour đầu tiên để thấy dữ liệu trong Oracle Database</div>
+                <a asp-action="Create" class="vt-btn vt-btn-primary" style="margin-top:16px">✈️ Đặt Tour Đầu Tiên</a>
+            </div>
+        }
+        else
+        {
+            <div class="vt-table-wrap">
+                <table class="vt-table">
+                    <thead>
+                        <tr>
+                            <th>Khách hàng</th>
+                            <th>Tour / Điểm đến</th>
+                            <th style="text-align:center">⏱ Thời gian</th>
+                            <th style="text-align:center">👥 Khách</th>
+                            <th style="text-align:center">🎫 Loại</th>
+                            <th style="text-align:right">💵 Tổng tiền</th>
+                            <th style="text-align:center">📅 Ngày đặt</th>
+                            <th style="text-align:center">Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div style="display:flex;align-items:center;gap:10px">
+                                        <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--cyan),var(--green));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:white;flex-shrink:0">
+                                            @(item.CustomerName?.Length > 0 ? item.CustomerName[0].ToString().ToUpper() : "?")
+                                        </div>
+                                        <div>
+                                            <div style="font-weight:600;color:var(--text-main);font-size:14px">@item.CustomerName</div>
+                                            <div style="font-size:12px;color:var(--text-muted)">@item.CustomerEmail</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="font-weight:600;color:var(--cyan);font-size:14px">@(item.Tour?.Destination ?? "–")</div>
+                                    <div style="font-size:11px;color:var(--text-sub)">ID #@item.Id</div>
+                                </td>
+                                <td style="text-align:center">
+                                    @if (item.Tour != null) {
+                                        <span class="vt-badge vt-badge-blue">@item.Tour.DurationDays N @item.Tour.DurationNights Đ</span>
+                                    } else { <span>–</span> }
+                                </td>
+                                <td style="text-align:center;font-weight:700;color:var(--text-main)">
+                                    @item.NumberOfPeople <span style="font-size:12px;color:var(--text-muted)">người</span>
+                                </td>
+                                <td style="text-align:center">
+                                    @if (item.IsGroup == 1) {
+                                        <span class="vt-badge vt-badge-orange">👥 Đoàn</span>
+                                    } else {
+                                        <span class="vt-badge vt-badge-gray">👤 Cá nhân</span>
+                                    }
+                                </td>
+                                <td style="text-align:right;font-weight:700;color:var(--green-light);font-size:15px">
+                                    @item.TotalPrice.ToString("N0")đ
+                                </td>
+                                <td style="text-align:center;font-size:12px;color:var(--text-muted)">
+                                    @item.BookingDate.ToString("dd/MM/yyyy")<br/>
+                                    <span style="color:var(--text-sub)">@item.BookingDate.ToString("HH:mm")</span>
+                                </td>
+                                <td style="text-align:center">
+                                    <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap">
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="vt-btn vt-btn-outline vt-btn-sm">👁</a>
+                                        <a asp-action="Edit"    asp-route-id="@item.Id" class="vt-btn vt-btn-outline vt-btn-sm">✏️</a>
+                                        <a asp-action="Delete"  asp-route-id="@item.Id" class="vt-btn vt-btn-danger vt-btn-sm">🗑</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Oracle info footer -->
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding:12px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;font-size:12px;color:var(--text-muted)">
+                <div style="display:flex;align-items:center;gap:8px">
+                    <span class="oracle-pulse-dot"></span>
+                    Oracle 21c XE · BOOKINGS Table · @total records
+                </div>
+                <div>Cập nhật: @DateTime.Now.ToString("HH:mm dd/MM/yyyy")</div>
+            </div>
+        }
+    </div>
+</div>

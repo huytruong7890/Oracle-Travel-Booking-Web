@@ -1,0 +1,56 @@
+/* Override Bootstrap and site defaults for dark theme */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Reset Bootstrap's light body */
+body { background-color: #0a0f1e !important; color: #f1f5f9 !important; }
+
+/* Remove default Bootstrap card/container styling conflicts */
+.container { max-width: 100% !important; padding: 0 !important; }
+
+/* Feature list styles */
+.vt-features-list { display: flex; flex-direction: column; gap: 20px; }
+.vt-feature-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 16px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    transition: all 0.3s ease;
+}
+.vt-feature-item:hover { border-color: rgba(8,145,178,0.25); background: rgba(8,145,178,0.06); }
+.vt-feature-icon { font-size: 24px; width: 44px; height: 44px; border-radius: 12px; background: rgba(8,145,178,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.vt-feature-item strong { display: block; font-size: 14px; font-weight: 700; color: #f1f5f9; margin-bottom: 4px; }
+.vt-feature-item p { font-size: 13px; color: #64748b; margin: 0; line-height: 1.5; }
+
+/* Gradient separator for hero stats */
+.vt-hero-stat-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.08); align-self: center; }
+
+/* Ensure dest-mini links lose default styling */
+a.dest-mini { text-decoration: none; color: inherit; }
+
+/* Bootstrap validation feedback overrides */
+.field-validation-error { color: #f87171 !important; font-size: 12px !important; }
+.input-validation-error { border-color: rgba(239,68,68,0.5) !important; }
+.validation-summary-errors { color: #f87171 !important; }
+.validation-summary-errors ul { list-style: none; padding: 0; margin: 0; }
+
+/* Remove bootstrap form-control styling in favor of vt-input */
+.form-control, .form-select { 
+    background-color: rgba(255,255,255,0.04) !important;
+    border: 1.5px solid rgba(255,255,255,0.08) !important;
+    color: #f1f5f9 !important;
+    border-radius: 12px !important;
+}
+.form-control:focus, .form-select:focus {
+    border-color: #0891b2 !important;
+    box-shadow: 0 0 0 3px rgba(8,145,178,0.15) !important;
+    background-color: rgba(8,145,178,0.08) !important;
+}
+
+/* Footer should not add margin-top normally */
+.vt-footer { margin-top: 0; }
+
+/* Tour card responsive fix */
+@media (max-width: 900px) {
+    .vt-why-grid-inner { grid-template-columns: 1fr !important; }
+}

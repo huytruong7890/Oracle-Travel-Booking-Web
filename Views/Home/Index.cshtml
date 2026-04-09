@@ -1,0 +1,297 @@
+@model webtour.Models.HomeIndexViewModel
+
+@{
+    ViewData["Title"] = "Trang Chủ – Đặt Tour Du Lịch";
+}
+
+<!-- ══ HERO ══ -->
+<section class="vt-hero">
+    <div class="vt-hero-grid">
+        <div class="vt-hero-left">
+            <div class="vt-hero-badge">
+                <span class="badge-dot"></span>
+                Kết nối Oracle · Hơn 10,000 tour đã đặt thành công
+            </div>
+            <h1 class="vt-hero-title">
+                Khám Phá <span class="vt-grad-text">Việt Nam</span><br/>
+                Theo Cách Của Bạn
+            </h1>
+            <p class="vt-hero-sub">
+                Hệ thống đặt tour thông minh kết nối Oracle Database – đảm bảo dữ liệu an toàn,
+                tìm kiếm tour nhanh chóng và trải nghiệm du lịch tuyệt vời nhất.
+            </p>
+            <div class="vt-hero-ctas">
+                <a class="vt-btn vt-btn-primary" asp-controller="Bookings" asp-action="Create">
+                    ✈️ Đặt Tour Ngay
+                </a>
+                <a class="vt-btn vt-btn-outline" asp-controller="Tours" asp-action="Index">
+                    🗺️ Xem Tất Cả Tour
+                </a>
+            </div>
+            <div class="vt-hero-stats">
+                <div class="vt-hero-stat">
+                    <div class="num" id="statTours">@(Model?.Tours?.Count() ?? 0)+</div>
+                    <div class="lbl">Tour đang có</div>
+                </div>
+                <div class="vt-hero-stat-divider"></div>
+                <div class="vt-hero-stat">
+                    <div class="num" id="statBook">@(Model?.TotalBookings ?? 0)+</div>
+                    <div class="lbl">Lượt đặt</div>
+                </div>
+                <div class="vt-hero-stat-divider"></div>
+                <div class="vt-hero-stat">
+                    <div class="num">98%</div>
+                    <div class="lbl">Hài lòng</div>
+                </div>
+            </div>
+        </div>
+        <div class="vt-hero-visual">
+            <div class="vt-hero-floating-badge top-right">🟢 Oracle Connected</div>
+            <div class="vt-hero-float-card">
+                <div class="card-title">🏖️ Điểm Đến Nổi Bật</div>
+                <div class="dest-mini-grid">
+                    <a class="dest-mini" asp-controller="Bookings" asp-action="Create">
+                        <div class="emoji">🏔️</div>
+                        <div class="name">Hạ Long</div>
+                        <div class="price">Từ 1,290,000đ</div>
+                    </a>
+                    <a class="dest-mini" asp-controller="Bookings" asp-action="Create">
+                        <div class="emoji">🌊</div>
+                        <div class="name">Đà Nẵng</div>
+                        <div class="price">Từ 890,000đ</div>
+                    </a>
+                    <a class="dest-mini" asp-controller="Bookings" asp-action="Create">
+                        <div class="emoji">🏮</div>
+                        <div class="name">Hội An</div>
+                        <div class="price">Từ 750,000đ</div>
+                    </a>
+                    <a class="dest-mini" asp-controller="Bookings" asp-action="Create">
+                        <div class="emoji">🌿</div>
+                        <div class="name">Sa Pa</div>
+                        <div class="price">Từ 1,050,000đ</div>
+                    </a>
+                </div>
+            </div>
+            <div class="vt-hero-floating-badge bot-left">✈️ @(Model?.TotalBookings ?? 0) chuyến hôm nay</div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ QUICK SEARCH ══ -->
+<div class="vt-quick-search">
+    <div class="vt-quick-search-card">
+        <div class="vt-search-title">🔍 Tìm Tour Nhanh</div>
+        <form asp-controller="Home" asp-action="Index" method="get" id="searchForm">
+            <div class="vt-search-grid">
+                <div class="vt-form-group" style="margin-bottom:0">
+                    <label>📍 Điểm đến hoặc tên tour</label>
+                    <div class="vt-input-prefix">
+                        <input name="destination" type="text" class="vt-input" placeholder="Hạ Long, Đà Nẵng, Hội An..." value="@Model?.Destination" autocomplete="off" />
+                    </div>
+                </div>
+                <div class="vt-form-group" style="margin-bottom:0">
+                    <label>🗓️ Số ngày</label>
+                    <select name="days" class="vt-select">
+                        <option value="">Tất cả</option>
+                        @for(int d = 1; d <= 10; d++) {
+                            <option value="@d" selected="@(Model?.DurationDays == d ? "selected" : null)">@d ngày</option>
+                        }
+                    </select>
+                </div>
+                <div class="vt-form-group" style="margin-bottom:0">
+                    <label>👥 Số người</label>
+                    <input type="number" name="people" class="vt-input" min="1" max="500" value="@(Model?.NumberOfPeople > 0 ? Model.NumberOfPeople.ToString() : "")" placeholder="2" />
+                </div>
+                <div class="vt-form-group" style="margin-bottom:0">
+                    <label>🎫 Loại tour</label>
+                    <select name="isGroup" class="vt-select">
+                        <option value="">Tất cả</option>
+                        <option value="0">Cá nhân</option>
+                        <option value="1">Đoàn (≥10 người)</option>
+                    </select>
+                </div>
+                <div style="display:flex;align-items:flex-end;padding-bottom:0">
+                    <button type="submit" class="vt-btn vt-btn-primary" style="height:50px;white-space:nowrap">🔍 Tìm</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- ══ TOUR LIST ══ -->
+<section class="vt-section" style="padding-top:64px">
+    <div class="vt-container">
+        <div class="vt-section-header">
+            <div class="vt-section-label">🎒 Gói Tour</div>
+            <h2 class="vt-section-title">Tour <span class="vt-grad-text">Được Ưa Chuộng</span></h2>
+            <p class="vt-section-sub">Lựa chọn gói tour phù hợp nhu cầu – kết nối dữ liệu trực tiếp từ Oracle Database</p>
+        </div>
+
+        @if (Model?.Tours == null || !Model.Tours.Any())
+        {
+            <div class="vt-empty">
+                <div class="vt-empty-icon">🗺️</div>
+                <div class="vt-empty-title">Không tìm thấy tour nào</div>
+                <div class="vt-empty-sub">Thử tìm với từ khóa khác hoặc xem tất cả tour</div>
+                <a class="vt-btn vt-btn-outline" asp-controller="Tours" asp-action="Index" style="margin-top:8px">Xem Tất Cả Tour</a>
+            </div>
+        }
+        else
+        {
+            <div class="vt-tour-grid">
+                @foreach (var tour in Model.Tours)
+                {
+                    string emoji = tour.Destination switch {
+                        var d when d.Contains("Hạ Long") || d.Contains("Ha Long") => "🏔️",
+                        var d when d.Contains("Đà Nẵng") || d.Contains("Da Nang") => "🌊",
+                        var d when d.Contains("Hội An") || d.Contains("Hoi An")   => "🏮",
+                        var d when d.Contains("Sapa") || d.Contains("Sa Pa")       => "🌿",
+                        var d when d.Contains("Phú Quốc") || d.Contains("Phu Quoc") => "🏝️",
+                        var d when d.Contains("Nha Trang")                          => "🌺",
+                        var d when d.Contains("Đà Lạt") || d.Contains("Da Lat")    => "🌸",
+                        _ => "✈️"
+                    };
+                    string imgUrl = tour.Destination switch {
+                        var d when d.Contains("Hạ Long") || d.Contains("Ha Long") => "/images/halong_tour.png",
+                        var d when d.Contains("Đà Nẵng") => "/images/danang_hoian_tour.jpg",
+                        var d when d.Contains("Hội An")  => "/images/danang_hoian_tour.jpg",
+                        var d when d.Contains("Sapa") || d.Contains("Sa Pa") => "/images/sapa_tour.jpg",
+                        var d when d.Contains("Phú Quốc") => "/images/phuquoc_tour.jpg",
+                        var d when d.Contains("Đà Lạt") => "/images/dalat_tour.jpg",
+                        var d when d.Contains("Nha Trang") => "/images/nhatrang_tour.jpg",
+                        _ => "/images/halong_tour.png"
+                    };
+                    <div class="vt-tour-card">
+                        <div class="vt-dest-img-wrap" style="height:180px">
+                            <img src="@imgUrl" alt="@tour.Destination" class="vt-dest-img" loading="lazy" />
+                            <div class="vt-dest-overlay"></div>
+                            <div class="vt-dest-price-chip" style="font-size:12px">@tour.DurationDays N @tour.DurationNights Đ</div>
+                        </div>
+                        <div class="vt-tour-card-body">
+                            <div class="vt-tour-card-header" style="padding:0;margin-bottom:12px;flex-direction:row;align-items:center;gap:10px">
+                                <span style="font-size:28px">@emoji</span>
+                                <div>
+                                    <div class="vt-tour-name" style="margin-bottom:2px">@tour.Destination</div>
+                                    <div class="vt-dest-location">📍 Việt Nam</div>
+                                </div>
+                            </div>
+                            <div class="vt-tour-meta">
+                                <span class="vt-tour-meta-item">📅 @tour.DurationDays ngày @tour.DurationNights đêm</span>
+                            </div>
+                            <div class="vt-tour-attractions">
+                                🗺️ @tour.Attractions
+                            </div>
+                            <div class="vt-price-row">
+                                <div class="vt-price-item">
+                                    <div class="vt-price-label">👤 Cá nhân</div>
+                                    <div class="vt-price-val">@tour.PriceIndividual.ToString("N0")đ</div>
+                                </div>
+                                <div style="width:1px;background:rgba(255,255,255,0.06)"></div>
+                                <div class="vt-price-item">
+                                    <div class="vt-price-label">👥 Đoàn (≥10)</div>
+                                    <div class="vt-price-val group">@tour.PriceGroup.ToString("N0")đ</div>
+                                </div>
+                            </div>
+                            <div class="vt-tour-actions">
+                                <a asp-controller="Bookings" asp-action="Create" asp-route-tourId="@tour.Id" class="vt-btn vt-btn-primary vt-btn-sm" style="flex:1">✈️ Đặt Ngay</a>
+                                <a asp-controller="Tours" asp-action="Details" asp-route-id="@tour.Id" class="vt-btn vt-btn-outline vt-btn-sm">Chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div style="text-align:center;margin-top:40px">
+                <a asp-controller="Tours" asp-action="Index" class="vt-btn vt-btn-outline">Xem Tất Cả Tour →</a>
+            </div>
+        }
+    </div>
+</section>
+
+<!-- ══ WHY ORACLE ══ -->
+<section class="vt-section" style="background:linear-gradient(135deg,rgba(8,145,178,0.06),rgba(5,150,105,0.04));margin-top:24px">
+    <div class="vt-container">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+            <div>
+                <div class="vt-section-label">💎 Tại sao chọn chúng tôi</div>
+                <h2 class="vt-section-title" style="text-align:left">Hệ Thống <span class="vt-grad-text">Tin Cậy</span><br/>Với Oracle</h2>
+                <p class="vt-section-sub" style="margin-bottom:32px">Xây dựng trên nền tảng Oracle Database – đảm bảo độ tin cậy cao, xử lý hàng triệu giao dịch mỗi ngày.</p>
+                <div class="vt-features-list">
+                    @foreach(var f in new[]{
+                        new{ Icon="🔐", Title="Bảo mật Oracle SSL/TLS", Desc="Dữ liệu khách hàng được mã hóa và bảo vệ chuẩn Oracle Security" },
+                        new{ Icon="⚡", Title="Xử lý nhanh 99.9% uptime", Desc="Oracle RAC đảm bảo hệ thống luôn hoạt động, không downtime" },
+                        new{ Icon="📊", Title="Analytics realtime", Desc="Oracle Analytics theo dõi xu hướng và tối ưu giá tour tự động" },
+                        new{ Icon="🔄", Title="Backup tự động mỗi 6 giờ", Desc="Oracle RMAN backup đảm bảo dữ liệu không bao giờ bị mất" },
+                    }) {
+                        <div class="vt-feature-item">
+                            <div class="vt-feature-icon">@f.Icon</div>
+                            <div>
+                                <strong>@f.Title</strong>
+                                <p>@f.Desc</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="vt-oracle-panel">
+                <div class="vt-oracle-panel-header">
+                    <div class="vt-oracle-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="8" rx="9" ry="4" stroke="#f97316" stroke-width="2"/><path d="M3 8v8c0 2.2 4 4 9 4s9-1.8 9-4V8" stroke="#f97316" stroke-width="2"/><path d="M3 12c0 2.2 4 4 9 4s9-1.8 9-4" stroke="#f97316" stroke-width="2"/></svg>
+                        Oracle 21c XE – VIETTOUR_DB
+                    </div>
+                    <span class="vt-badge vt-badge-green">🟢 Connected</span>
+                </div>
+                <div class="vt-oracle-body">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+                        @foreach(var m in new[]{
+                            new{ L="CPU", V="32%", W="32%"},
+                            new{ L="Memory", V="61%", W="61%"},
+                            new{ L="Sessions", V="18/100", W="18%"},
+                            new{ L="Storage", V="4.5 GB", W="45%"},
+                        }) {
+                            <div>
+                                <div style="display:flex;justify-content:space-between;font-size:11px;color:#64748b;margin-bottom:4px"><span>@m.L</span><span style="color:#94a3b8">@m.V</span></div>
+                                <div style="height:5px;background:rgba(255,255,255,0.06);border-radius:10px"><div style="height:100%;width:@m.W;background:linear-gradient(90deg,#0891b2,#059669);border-radius:10px"></div></div>
+                            </div>
+                        }
+                    </div>
+                    <div class="vt-oracle-log">
+                        <div class="vt-log-line info"><span class="tm" id="lt1">--:--:--</span> INFO – Connection pool: 18/100 active</div>
+                        <div class="vt-log-line"><span class="tm" id="lt2">--:--:--</span> INSERT – BOOKINGS (ID: TRB@DateTime.Now.ToString("yyyyMMddHHmm"))</div>
+                        <div class="vt-log-line ok"><span class="tm" id="lt3">--:--:--</span> COMMIT – Transaction completed [OK]</div>
+                        <div class="vt-log-line info" id="lt4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+<script>
+    // Oracle log live clock
+    function updateOracleTimes() {
+        const now = new Date();
+        const t = now.toTimeString().slice(0,8);
+        ['lt1','lt2','lt3'].forEach(id => { const el = document.getElementById(id); if(el) el.textContent = t; });
+        const lt4 = document.getElementById('lt4');
+        if(lt4) lt4.innerHTML = `<span class="tm">${t}</span> SELECT COUNT(*) FROM BOOKINGS – [OK]`;
+    }
+    updateOracleTimes();
+    setInterval(updateOracleTimes, 5000);
+
+    // Animate stats
+    document.querySelectorAll('.vt-hero-stat .num').forEach(el => {
+        const text = el.textContent;
+        const num = parseInt(text.replace(/\D/g,''));
+        if(!isNaN(num) && num > 0) {
+            let current = 0;
+            const step = Math.max(1, Math.floor(num / 40));
+            const iv = setInterval(() => {
+                current = Math.min(current + step, num);
+                el.textContent = current + (text.includes('%') ? '%' : '+');
+                if(current >= num) clearInterval(iv);
+            }, 30);
+        }
+    });
+</script>
+}

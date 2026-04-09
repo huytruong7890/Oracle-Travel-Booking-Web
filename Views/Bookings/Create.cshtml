@@ -1,0 +1,250 @@
+@using System.Text.Json
+@model webtour.Models.Booking
+
+@{
+    ViewData["Title"] = "Đặt Tour Du Lịch";
+    var tourDataJson = JsonSerializer.Serialize(ViewBag.TourData ?? new object[0]);
+}
+
+<div class="vt-booking-page">
+    <div class="vt-container">
+        <div class="vt-breadcrumb">
+            <a asp-controller="Home" asp-action="Index">🏠 Trang chủ</a>
+            <span class="sep">›</span>
+            <a asp-controller="Bookings" asp-action="Index">Đặt Tour</a>
+            <span class="sep">›</span>
+            <span class="current">Đặt Tour Mới</span>
+        </div>
+
+        <div class="vt-booking-grid">
+            <!-- Form -->
+            <div class="vt-booking-form-card">
+                <div class="vt-booking-form-title">✈️ Đặt Tour Du Lịch</div>
+                <div class="vt-booking-form-sub">Điền đầy đủ thông tin để hoàn tất đặt tour – dữ liệu sẽ được lưu vào Oracle Database</div>
+
+                <form asp-action="Create" method="post" id="bookingForm">
+                    <div asp-validation-summary="ModelOnly" class="vt-form-errors"></div>
+
+                    <!-- ── THÔNG TIN KHÁCH HÀNG ── -->
+                    <div class="vt-form-divider">👤 Thông tin khách hàng</div>
+
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+                        <div class="vt-form-group">
+                            <label for="CustomerName">Họ và tên *</label>
+                            <div class="vt-input-prefix">
+                                <span class="prefix-icon">👤</span>
+                                <input asp-for="CustomerName" id="CustomerName" class="vt-input" placeholder="Nguyễn Văn An" />
+                            </div>
+                            <span asp-validation-for="CustomerName" class="vt-error"></span>
+                        </div>
+                        <div class="vt-form-group">
+                            <label for="CustomerEmail">Email *</label>
+                            <div class="vt-input-prefix">
+                                <span class="prefix-icon">✉️</span>
+                                <input asp-for="CustomerEmail" id="CustomerEmail" type="email" class="vt-input" placeholder="email@example.com" />
+                            </div>
+                            <span asp-validation-for="CustomerEmail" class="vt-error"></span>
+                        </div>
+                    </div>
+
+                    <!-- ── THÔNG TIN TOUR ── -->
+                    <div class="vt-form-divider">🗺️ Chọn tour & lịch trình</div>
+
+                    <div class="vt-form-group">
+                        <label for="TourId">Tour du lịch *</label>
+                        <select asp-for="TourId" id="TourId" class="vt-select" asp-items="ViewBag.TourId">
+                            <option value="">-- Chọn tour --</option>
+                        </select>
+                        <span asp-validation-for="TourId" class="vt-error"></span>
+                    </div>
+
+                    <!-- Tour Info Preview -->
+                    <div id="tourInfoPreview" style="display:none;background:rgba(8,145,178,0.08);border:1px solid rgba(8,145,178,0.2);border-radius:12px;padding:16px;margin-bottom:20px;font-size:13px">
+                        <div style="display:flex;gap:12px;align-items:flex-start">
+                            <div id="tourPreviewImg" style="width:80px;height:60px;border-radius:8px;background-size:cover;background-position:center;flex-shrink:0"></div>
+                            <div>
+                                <div style="font-weight:700;color:var(--text-main);margin-bottom:4px" id="tourPreviewName"></div>
+                                <div style="color:var(--cyan);font-size:12px" id="tourPreviewDuration"></div>
+                                <div style="color:var(--text-muted);font-size:12px;margin-top:4px;line-height:1.5" id="tourPreviewAttractions"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ── SỐ LƯỢNG & LOẠI ── -->
+                    <div class="vt-form-divider">👥 Số lượng người & loại đặt</div>
+
+                    <div class="vt-form-group">
+                        <label>Số lượng khách *</label>
+                        <div style="display:flex;align-items:center;gap:12px">
+                            <button type="button" onclick="changeQty(-1)" class="vt-btn vt-btn-outline vt-btn-icon" style="width:44px;height:44px;font-size:20px">−</button>
+                            <input asp-for="NumberOfPeople" id="NumberOfPeople" type="number" class="vt-input" min="1" max="500" value="2" style="text-align:center;font-size:20px;font-weight:700;flex:1;max-width:120px" />
+                            <button type="button" onclick="changeQty(1)" class="vt-btn vt-btn-outline vt-btn-icon" style="width:44px;height:44px;font-size:20px">+</button>
+                            <span style="color:var(--text-muted);font-size:14px">người</span>
+                        </div>
+                        <span asp-validation-for="NumberOfPeople" class="vt-error"></span>
+                    </div>
+
+                    <div class="vt-form-group">
+                        <label>Loại đặt tour *</label>
+                        <div class="vt-price-type-grid">
+                            <label class="vt-price-type-card selected" id="typeCardIndividual" onclick="selectType(0)">
+                                <input type="radio" name="IsGroup" value="0" id="typeIndividual" checked style="display:none" />
+                                <div class="icon">👤</div>
+                                <div>
+                                    <div class="label">Cá nhân</div>
+                                    <div class="price" id="ptLabelInd">Giá cá nhân</div>
+                                </div>
+                            </label>
+                            <label class="vt-price-type-card" id="typeCardGroup" onclick="selectType(1)">
+                                <input type="radio" name="IsGroup" value="1" id="typeGroup" style="display:none" />
+                                <div class="icon">👥</div>
+                                <div>
+                                    <div class="label">Đoàn (≥10)</div>
+                                    <div class="price" id="ptLabelGrp">Giá đoàn</div>
+                                </div>
+                            </label>
+                        </div>
+                        <div id="groupHintBox" style="display:none;margin-top:8px;padding:10px 14px;background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.2);border-radius:10px;font-size:12px;color:var(--orange)">
+                            ⚠️ Giá đoàn yêu cầu tối thiểu 10 người. Hiện tại bạn có <span id="groupHintCount">0</span> người.
+                        </div>
+                    </div>
+
+                    <div style="display:flex;gap:12px;margin-top:24px">
+                        <button type="submit" class="vt-btn vt-btn-primary" style="flex:1;height:52px;font-size:16px">
+                            💾 Xác Nhận Đặt Tour
+                        </button>
+                        <a asp-action="Index" class="vt-btn vt-btn-outline" style="height:52px">Hủy</a>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Summary Sidebar -->
+            <div>
+                <div class="vt-summary-card">
+                    <div class="vt-summary-title">📋 Tóm Tắt Đơn Đặt</div>
+
+                    <div id="tourSummaryImg" class="vt-summary-tour-img"
+                         style="background-image:url('https://images.unsplash.com/photo-1599701004128-40b4971c26f6?w=800&q=80')"></div>
+
+                    <div class="vt-summary-row">
+                        <span class="key">Tour</span>
+                        <span class="val" id="sumTourName">Chưa chọn</span>
+                    </div>
+                    <div class="vt-summary-row">
+                        <span class="key">⏱ Thời gian</span>
+                        <span class="val" id="sumDuration">–</span>
+                    </div>
+                    <div class="vt-summary-row">
+                        <span class="key">🗺️ Địa điểm</span>
+                        <span class="val" id="sumAttractions" style="font-size:12px;max-width:200px;text-align:right;line-height:1.5">–</span>
+                    </div>
+                    <div class="vt-summary-row">
+                        <span class="key">👥 Số lượng</span>
+                        <span class="val" id="sumPeople">2 người</span>
+                    </div>
+                    <div class="vt-summary-row">
+                        <span class="key">🎫 Loại</span>
+                        <span class="val" id="sumType">Cá nhân</span>
+                    </div>
+                    <div class="vt-summary-row">
+                        <span class="key">💵 Đơn giá</span>
+                        <span class="val" id="sumUnitPrice">–</span>
+                    </div>
+
+                    <div class="vt-total-row">
+                        <div class="label">Tổng tiền</div>
+                        <div class="amount" id="sumTotal">0đ</div>
+                    </div>
+                    <div class="vt-summary-oracle-badge">
+                        🗄️ Dữ liệu được lưu vào Oracle Database an toàn
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        const tourData = @Html.Raw(tourDataJson);
+        let currentIsGroup = 0;
+
+        function getImg(dest) {
+            let url = "";
+            if (dest.includes("Hạ Long") || dest.includes("Ha Long")) url = "/images/halong_tour.png";
+            else if (dest.includes("Đà Nẵng")) url = "/images/danang_hoian_tour.jpg";
+            else if (dest.includes("Hội An")) url = "/images/danang_hoian_tour.jpg";
+            else if (dest.includes("Sapa") || dest.includes("Sa Pa")) url = "/images/sapa_tour.jpg";
+            else if (dest.includes("Phú Quốc")) url = "/images/phuquoc_tour.jpg";
+            else if (dest.includes("Đà Lạt")) url = "/images/dalat_tour.jpg";
+            else if (dest.includes("Nha Trang")) url = "/images/nhatrang_tour.jpg";
+            else url = "/images/halong_tour.png";
+            return url;
+        }
+
+        const fmt = v => new Intl.NumberFormat('vi-VN').format(v) + 'đ';
+
+        function changeQty(delta) {
+            const el = document.getElementById('NumberOfPeople');
+            el.value = Math.max(1, (parseInt(el.value) || 1) + delta);
+            updateSummary();
+        }
+
+        function selectType(val) {
+            currentIsGroup = val;
+            document.getElementById('typeCardIndividual').classList.toggle('selected', val === 0);
+            document.getElementById('typeCardGroup').classList.toggle('selected', val === 1);
+            document.getElementById('typeIndividual').checked = (val === 0);
+            document.getElementById('typeGroup').checked = (val === 1);
+            updateSummary();
+        }
+
+        function updateSummary() {
+            const tourId = parseInt(document.getElementById('TourId').value);
+            const ppl = Math.max(1, parseInt(document.getElementById('NumberOfPeople').value) || 1);
+            const tour = tourData.find(t => t.Id === tourId);
+
+            // Group hint
+            const hint = document.getElementById('groupHintBox');
+            if (currentIsGroup === 1 && ppl < 10) {
+                document.getElementById('groupHintCount').textContent = ppl;
+                hint.style.display = 'block';
+            } else { hint.style.display = 'none'; }
+
+            document.getElementById('sumPeople').textContent = ppl + ' người';
+            document.getElementById('sumType').textContent = currentIsGroup ? '👥 Đoàn' : '👤 Cá nhân';
+
+            if (!tour) {
+                document.getElementById('sumTotal').textContent = '–';
+                document.getElementById('sumUnitPrice').textContent = '–';
+                return;
+            }
+
+            const unitPrice = currentIsGroup ? tour.PriceGroup : tour.PriceIndividual;
+            const total = unitPrice * ppl;
+            document.getElementById('sumTourName').textContent = tour.Destination;
+            document.getElementById('sumDuration').textContent = `${tour.DurationDays} ngày ${tour.DurationNights} đêm`;
+            document.getElementById('sumAttractions').textContent = tour.Attractions || '–';
+            document.getElementById('sumUnitPrice').textContent = fmt(unitPrice) + '/người';
+            document.getElementById('sumTotal').textContent = fmt(total);
+
+            // Price type labels
+            document.getElementById('ptLabelInd').textContent = fmt(tour.PriceIndividual);
+            document.getElementById('ptLabelGrp').textContent = fmt(tour.PriceGroup);
+
+            // Images
+            const img = getImg(tour.Destination);
+            document.getElementById('tourSummaryImg').style.backgroundImage = `url('${img}')`;
+            document.getElementById('tourPreviewImg').style.backgroundImage = `url('${img}')`;
+            document.getElementById('tourPreviewName').textContent = tour.Destination;
+            document.getElementById('tourPreviewDuration').textContent = `📅 ${tour.DurationDays} ngày ${tour.DurationNights} đêm`;
+            document.getElementById('tourPreviewAttractions').textContent = '🗺️ ' + (tour.Attractions || '');
+            document.getElementById('tourInfoPreview').style.display = 'block';
+        }
+
+        document.getElementById('TourId').addEventListener('change', updateSummary);
+        document.getElementById('NumberOfPeople').addEventListener('input', updateSummary);
+        updateSummary();
+    </script>
+}

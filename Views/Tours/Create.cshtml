@@ -1,0 +1,122 @@
+@model webtour.Models.Tour
+
+@{
+    ViewData["Title"] = "Thêm Tour Mới";
+}
+
+<div class="vt-booking-page">
+    <div class="vt-container">
+        <div class="vt-breadcrumb">
+            <a asp-controller="Home" asp-action="Index">🏠 Trang chủ</a>
+            <span class="sep">›</span>
+            <a asp-action="Index">Quản Lý Tour</a>
+            <span class="sep">›</span>
+            <span class="current">Thêm Tour Mới</span>
+        </div>
+
+        <div style="max-width:760px;margin:0 auto">
+            <div class="vt-booking-form-card">
+                <div class="vt-booking-form-title">🗺️ Thêm Tour Mới</div>
+                <div class="vt-booking-form-sub">Điền đầy đủ thông tin tour để lưu vào Oracle Database</div>
+
+                <form asp-action="Create" method="post">
+                    <div asp-validation-summary="ModelOnly" class="vt-form-errors"></div>
+
+                    <div class="vt-form-divider">📍 Thông tin điểm đến</div>
+
+                    <div class="vt-form-group">
+                        <label for="Destination">Tên điểm đến / Tour *</label>
+                        <input asp-for="Destination" id="Destination" class="vt-input" placeholder="Ví dụ: Hạ Long Bay, Đà Nẵng – Hội An..." />
+                        <span asp-validation-for="Destination" class="vt-error"></span>
+                    </div>
+
+                    <div class="vt-form-divider">📅 Thời gian</div>
+
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+                        <div class="vt-form-group">
+                            <label for="DurationDays">Số ngày *</label>
+                            <div class="vt-input-prefix">
+                                <span class="prefix-icon">📅</span>
+                                <input asp-for="DurationDays" id="DurationDays" class="vt-input" type="number" min="1" placeholder="3" />
+                            </div>
+                            <span asp-validation-for="DurationDays" class="vt-error"></span>
+                        </div>
+                        <div class="vt-form-group">
+                            <label for="DurationNights">Số đêm *</label>
+                            <div class="vt-input-prefix">
+                                <span class="prefix-icon">🌙</span>
+                                <input asp-for="DurationNights" id="DurationNights" class="vt-input" type="number" min="0" placeholder="2" />
+                            </div>
+                            <span asp-validation-for="DurationNights" class="vt-error"></span>
+                        </div>
+                    </div>
+
+                    <div class="vt-form-divider">🗺️ Địa điểm tham quan</div>
+
+                    <div class="vt-form-group">
+                        <label for="Attractions">Các địa điểm tham quan *</label>
+                        <textarea asp-for="Attractions" id="Attractions" class="vt-textarea" rows="3"
+                                  placeholder="Vịnh Hạ Long, Đảo Titop, Hang Sửng Sốt, Đảo Cát Bà..."></textarea>
+                        <span asp-validation-for="Attractions" class="vt-error"></span>
+                        <div style="font-size:12px;color:var(--text-sub);margin-top:4px">💡 Liệt kê các địa điểm tham quan, cách nhau bằng dấu phẩy</div>
+                    </div>
+
+                    <div class="vt-form-divider">💰 Bảng giá tour</div>
+
+                    <div style="background:rgba(8,145,178,0.06);border:1px solid rgba(8,145,178,0.15);border-radius:12px;padding:16px;margin-bottom:20px;font-size:13px;color:var(--text-muted)">
+                        ℹ️ Giá đoàn áp dụng khi số người đặt <strong style="color:var(--cyan)">từ 10 người trở lên</strong>. Nên đặt giá đoàn thấp hơn giá cá nhân.
+                    </div>
+
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+                        <div class="vt-form-group">
+                            <label for="PriceIndividual">💵 Giá cá nhân (đ/người) *</label>
+                            <div class="vt-input-prefix">
+                                <span class="prefix-icon">👤</span>
+                                <input asp-for="PriceIndividual" id="PriceIndividual" class="vt-input" type="number" min="0" step="1000" placeholder="1290000" />
+                            </div>
+                            <span asp-validation-for="PriceIndividual" class="vt-error"></span>
+                            <div class="price-preview" id="prevIndividual" style="font-size:12px;color:var(--green-light);margin-top:4px"></div>
+                        </div>
+                        <div class="vt-form-group">
+                            <label for="PriceGroup">💵 Giá đoàn (đ/người) *</label>
+                            <div class="vt-input-prefix">
+                                <span class="prefix-icon">👥</span>
+                                <input asp-for="PriceGroup" id="PriceGroup" class="vt-input" type="number" min="0" step="1000" placeholder="990000" />
+                            </div>
+                            <span asp-validation-for="PriceGroup" class="vt-error"></span>
+                            <div class="price-preview" id="prevGroup" style="font-size:12px;color:var(--orange);margin-top:4px"></div>
+                        </div>
+                    </div>
+
+                    <div style="display:flex;gap:12px;margin-top:8px">
+                        <button type="submit" class="vt-btn vt-btn-primary" style="flex:1">
+                            💾 Lưu vào Oracle Database
+                        </button>
+                        <a asp-action="Index" class="vt-btn vt-btn-outline">Hủy</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        const fmt = v => new Intl.NumberFormat('vi-VN').format(v) + ' đ';
+        const pi = document.getElementById('PriceIndividual');
+        const pg = document.getElementById('PriceGroup');
+        const showPreview = (inp, el) => {
+            const v = parseFloat(inp.value);
+            el.textContent = isNaN(v) || v <= 0 ? '' : '≈ ' + fmt(v);
+        };
+        pi?.addEventListener('input', () => showPreview(pi, document.getElementById('prevIndividual')));
+        pg?.addEventListener('input', () => showPreview(pg, document.getElementById('prevGroup')));
+
+        // Auto fill nights = days - 1
+        document.getElementById('DurationDays')?.addEventListener('input', function() {
+            const n = document.getElementById('DurationNights');
+            if (n && !n.value) n.value = Math.max(0, parseInt(this.value || 0) - 1);
+        });
+    </script>
+}

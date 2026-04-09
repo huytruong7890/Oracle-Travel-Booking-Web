@@ -1,0 +1,70 @@
+@model webtour.Models.Booking
+
+@{
+    ViewData["Title"] = "Chỉnh Sửa Đặt Tour";
+}
+
+<div class="vt-booking-page">
+    <div class="vt-container">
+        <div class="vt-breadcrumb">
+            <a asp-controller="Home" asp-action="Index">🏠 Trang chủ</a>
+            <span class="sep">›</span>
+            <a asp-action="Index">Danh Sách</a>
+            <span class="sep">›</span>
+            <span class="current">Chỉnh Sửa #@Model.Id</span>
+        </div>
+        <div style="max-width:640px;margin:0 auto">
+            <div class="vt-booking-form-card">
+                <div class="vt-booking-form-title">✏️ Chỉnh Sửa Đặt Tour #@Model.Id</div>
+                <div class="vt-booking-form-sub">Cập nhật thông tin đặt tour trong Oracle Database</div>
+
+                <form asp-action="Edit" method="post">
+                    <input type="hidden" asp-for="Id" />
+                    <div asp-validation-summary="ModelOnly" class="vt-form-errors"></div>
+
+                    <div class="vt-form-divider">👤 Thông tin khách hàng</div>
+                    <div class="vt-form-group">
+                        <label>Họ và tên *</label>
+                        <input asp-for="CustomerName" class="vt-input" placeholder="Nguyễn Văn An" />
+                        <span asp-validation-for="CustomerName" class="vt-error"></span>
+                    </div>
+                    <div class="vt-form-group">
+                        <label>Email *</label>
+                        <input asp-for="CustomerEmail" type="email" class="vt-input" placeholder="email@example.com" />
+                        <span asp-validation-for="CustomerEmail" class="vt-error"></span>
+                    </div>
+
+                    <div class="vt-form-divider">🗺️ Thông tin tour</div>
+                    <div class="vt-form-group">
+                        <label>Chọn tour *</label>
+                        <select asp-for="TourId" class="vt-select" asp-items="ViewBag.TourId"></select>
+                        <span asp-validation-for="TourId" class="vt-error"></span>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+                        <div class="vt-form-group">
+                            <label>Số lượng khách *</label>
+                            <input asp-for="NumberOfPeople" type="number" class="vt-input" min="1" max="500" />
+                            <span asp-validation-for="NumberOfPeople" class="vt-error"></span>
+                        </div>
+                        <div class="vt-form-group">
+                            <label>Loại đặt *</label>
+                            <select asp-for="IsGroup" class="vt-select">
+                                <option value="0">👤 Cá nhân</option>
+                                <option value="1">👥 Đoàn (≥10 người)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="display:flex;gap:12px;margin-top:8px">
+                        <button type="submit" class="vt-btn vt-btn-primary" style="flex:1">💾 Lưu thay đổi</button>
+                        <a asp-action="Details" asp-route-id="@Model.Id" class="vt-btn vt-btn-outline">Hủy</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

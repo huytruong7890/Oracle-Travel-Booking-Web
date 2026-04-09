@@ -1,0 +1,127 @@
+@model webtour.Models.Booking
+
+@{
+    ViewData["Title"] = "Chi Tiết Đặt Tour";
+}
+
+<div class="vt-section" style="padding-bottom:80px">
+    <div class="vt-container">
+        <div class="vt-breadcrumb">
+            <a asp-controller="Home" asp-action="Index">🏠 Trang chủ</a>
+            <span class="sep">›</span>
+            <a asp-action="Index">Danh Sách Đặt Tour</a>
+            <span class="sep">›</span>
+            <span class="current">Chi Tiết #@Model.Id</span>
+        </div>
+
+        <div class="vt-details-grid">
+            <!-- Main -->
+            <div class="vt-details-card">
+                <div style="display:flex;align-items:center;gap:16px;margin-bottom:28px">
+                    <div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--cyan),var(--green));display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:white;flex-shrink:0">
+                        @(Model.CustomerName?.Length > 0 ? Model.CustomerName[0].ToString().ToUpper() : "?")
+                    </div>
+                    <div>
+                        <h1 style="font-size:22px;font-weight:800;color:var(--text-main);margin-bottom:4px">@Model.CustomerName</h1>
+                        <span class="vt-badge @(Model.IsGroup==1 ? "vt-badge-orange" : "vt-badge-blue")">
+                            @(Model.IsGroup == 1 ? "👥 Đặt Đoàn" : "👤 Cá Nhân")
+                        </span>
+                    </div>
+                    <div style="margin-left:auto">
+                        <code style="color:var(--cyan);background:rgba(8,145,178,0.1);padding:6px 14px;border-radius:8px;font-size:14px">Booking #@Model.Id</code>
+                    </div>
+                </div>
+
+                <h3 style="font-size:14px;font-weight:700;color:var(--text-sub);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:16px">👤 Thông tin khách hàng</h3>
+                <div class="vt-detail-row">
+                    <div class="vt-detail-key">Họ và tên</div>
+                    <div class="vt-detail-val" style="font-weight:700">@Model.CustomerName</div>
+                </div>
+                <div class="vt-detail-row">
+                    <div class="vt-detail-key">Email</div>
+                    <div class="vt-detail-val"><a href="mailto:@Model.CustomerEmail" style="color:var(--cyan)">@Model.CustomerEmail</a></div>
+                </div>
+
+                <h3 style="font-size:14px;font-weight:700;color:var(--text-sub);letter-spacing:0.8px;text-transform:uppercase;margin:24px 0 16px">🗺️ Thông tin tour</h3>
+                <div class="vt-detail-row">
+                    <div class="vt-detail-key">Tour</div>
+                    <div class="vt-detail-val" style="font-weight:700;color:var(--cyan)">@(Model.Tour?.Destination ?? "–")</div>
+                </div>
+                @if (Model.Tour != null) {
+                    <div class="vt-detail-row">
+                        <div class="vt-detail-key">Thời gian</div>
+                        <div class="vt-detail-val">@Model.Tour.DurationDays ngày @Model.Tour.DurationNights đêm</div>
+                    </div>
+                    <div class="vt-detail-row">
+                        <div class="vt-detail-key">Địa điểm tham quan</div>
+                        <div class="vt-detail-val" style="color:var(--text-muted);line-height:1.7">@Model.Tour.Attractions</div>
+                    </div>
+                }
+                <div class="vt-detail-row">
+                    <div class="vt-detail-key">Số lượng khách</div>
+                    <div class="vt-detail-val"><strong style="font-size:18px">@Model.NumberOfPeople</strong> người</div>
+                </div>
+                <div class="vt-detail-row">
+                    <div class="vt-detail-key">Loại đặt</div>
+                    <div class="vt-detail-val">
+                        @if (Model.IsGroup == 1) {
+                            <span class="vt-badge vt-badge-orange">👥 Đặt Đoàn</span>
+                        } else {
+                            <span class="vt-badge vt-badge-blue">👤 Cá Nhân</span>
+                        }
+                    </div>
+                </div>
+                <div class="vt-detail-row">
+                    <div class="vt-detail-key">Đơn giá</div>
+                    <div class="vt-detail-val">
+                        @if (Model.Tour != null) {
+                            var unit = Model.IsGroup == 1 ? Model.Tour.PriceGroup : Model.Tour.PriceIndividual;
+                            <span>@unit.ToString("N0")đ / người</span>
+                        }
+                    </div>
+                </div>
+
+                <h3 style="font-size:14px;font-weight:700;color:var(--text-sub);letter-spacing:0.8px;text-transform:uppercase;margin:24px 0 16px">💰 Thanh toán</h3>
+                <div class="vt-detail-row">
+                    <div class="vt-detail-key">Tổng tiền</div>
+                    <div class="vt-detail-val" style="font-size:24px;font-weight:900;color:var(--green-light)">@Model.TotalPrice.ToString("N0")đ</div>
+                </div>
+                <div class="vt-detail-row">
+                    <div class="vt-detail-key">Ngày đặt</div>
+                    <div class="vt-detail-val">@Model.BookingDate.ToString("HH:mm - dd/MM/yyyy")</div>
+                </div>
+
+                <div style="display:flex;gap:12px;margin-top:28px">
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="vt-btn vt-btn-outline">✏️ Chỉnh Sửa</a>
+                    <a asp-action="Delete" asp-route-id="@Model.Id" class="vt-btn vt-btn-danger">🗑️ Xóa</a>
+                    <a asp-action="Index" class="vt-btn vt-btn-outline" style="margin-left:auto">← Quay Lại</a>
+                </div>
+            </div>
+
+            <!-- Oracle Sidebar -->
+            <div>
+                <div class="vt-oracle-panel">
+                    <div class="vt-oracle-panel-header">
+                        <div class="vt-oracle-title">🗄️ Oracle DB Record</div>
+                        <span class="vt-badge vt-badge-green">✅ Committed</span>
+                    </div>
+                    <div class="vt-oracle-body">
+                        <div class="vt-oracle-log">
+                            <div class="vt-log-line info"><span class="tm">SQL&gt; </span>SELECT * FROM BOOKINGS</div>
+                            <div class="vt-log-line"><span class="tm">     </span>WHERE ID = @Model.Id;</div>
+                            <div class="vt-log-line" style="color:#64748b;margin:4px 0">–––––––––––––––––</div>
+                            <div class="vt-log-line ok"><span class="tm">ID   </span>: @Model.Id</div>
+                            <div class="vt-log-line ok"><span class="tm">NAME </span>: @Model.CustomerName</div>
+                            <div class="vt-log-line ok"><span class="tm">TOUR </span>: @Model.TourId</div>
+                            <div class="vt-log-line ok"><span class="tm">PPL  </span>: @Model.NumberOfPeople</div>
+                            <div class="vt-log-line ok"><span class="tm">GRPS </span>: @Model.IsGroup</div>
+                            <div class="vt-log-line ok"><span class="tm">PRICE</span>: @Model.TotalPrice</div>
+                            <div class="vt-log-line" style="color:#64748b;margin:4px 0">–––––––––––––––––</div>
+                            <div class="vt-log-line ok"><span class="tm">     </span>1 row selected [OK]</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

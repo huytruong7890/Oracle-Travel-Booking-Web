@@ -1,0 +1,170 @@
+@model webtour.Models.Tour
+
+@{
+    ViewData["Title"] = "Chi Tiết Tour";
+    string emoji = Model.Destination switch {
+        var d when d.Contains("Hạ Long") || d.Contains("Ha Long") => "🏔️",
+        var d when d.Contains("Đà Nẵng") || d.Contains("Da Nang") => "🌊",
+        var d when d.Contains("Hội An") || d.Contains("Hoi An")   => "🏮",
+        var d when d.Contains("Sapa") || d.Contains("Sa Pa")       => "🌿",
+        var d when d.Contains("Phú Quốc") || d.Contains("Phu Quoc") => "🏝️",
+        var d when d.Contains("Nha Trang") => "🌺",
+        _ => "✈️"
+    };
+    string imgUrl = Model.Destination switch {
+        var d when d.Contains("Hạ Long") || d.Contains("Ha Long") => "/images/halong_tour.png",
+        var d when d.Contains("Đà Nẵng") => "/images/danang_hoian_tour.jpg",
+        var d when d.Contains("Hội An")  => "/images/danang_hoian_tour.jpg",
+        var d when d.Contains("Sapa") || d.Contains("Sa Pa") => "/images/sapa_tour.jpg",
+        var d when d.Contains("Phú Quốc") => "/images/phuquoc_tour.jpg",
+        var d when d.Contains("Đà Lạt") => "/images/dalat_tour.jpg",
+        var d when d.Contains("Nha Trang") => "/images/nhatrang_tour.jpg",
+        _ => "/images/halong_tour.png"
+    };
+}
+
+<div class="vt-section" style="padding-bottom:80px">
+    <div class="vt-container">
+        <div class="vt-breadcrumb">
+            <a asp-controller="Home" asp-action="Index">🏠 Trang chủ</a>
+            <span class="sep">›</span>
+            <a asp-action="Index">Quản Lý Tour</a>
+            <span class="sep">›</span>
+            <span class="current">@Model.Destination</span>
+        </div>
+
+        <div class="vt-details-grid">
+            <!-- Main -->
+            <div>
+                <!-- Hero image -->
+                <div style="height:320px;border-radius:var(--radius-lg);overflow:hidden;margin-bottom:28px;position:relative">
+                    <img src="@imgUrl" alt="@Model.Destination" style="width:100%;height:100%;object-fit:cover" />
+                    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,0.7))"></div>
+                    <div style="position:absolute;bottom:24px;left:24px">
+                        <div style="font-size:40px;margin-bottom:8px">@emoji</div>
+                        <h1 style="font-size:32px;font-weight:900;color:white;margin-bottom:8px">@Model.Destination</h1>
+                        <div style="display:flex;gap:12px">
+                            <span class="vt-badge vt-badge-blue">📅 @Model.DurationDays ngày @Model.DurationNights đêm</span>
+                            <span class="vt-badge vt-badge-green">✅ Tour ID: #@Model.Id</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vt-details-card">
+                    <h2 style="font-size:18px;font-weight:700;color:var(--text-main);margin-bottom:24px;display:flex;align-items:center;gap:8px">
+                        📋 Thông tin chi tiết
+                    </h2>
+
+                    <div class="vt-detail-row">
+                        <div class="vt-detail-key">🆔 Mã Tour</div>
+                        <div class="vt-detail-val"><code style="color:var(--cyan);background:rgba(8,145,178,0.1);padding:2px 8px;border-radius:6px">#@Model.Id</code></div>
+                    </div>
+                    <div class="vt-detail-row">
+                        <div class="vt-detail-key">📍 Điểm đến</div>
+                        <div class="vt-detail-val" style="font-weight:700;font-size:16px">@Model.Destination</div>
+                    </div>
+                    <div class="vt-detail-row">
+                        <div class="vt-detail-key">⏱ Thời gian</div>
+                        <div class="vt-detail-val">@Model.DurationDays ngày @Model.DurationNights đêm</div>
+                    </div>
+                    <div class="vt-detail-row">
+                        <div class="vt-detail-key">🗺️ Địa điểm tham quan</div>
+                        <div class="vt-detail-val" style="line-height:1.7;color:var(--text-muted)">@Model.Attractions</div>
+                    </div>
+                    <div class="vt-detail-row">
+                        <div class="vt-detail-key">👤 Giá cá nhân</div>
+                        <div class="vt-detail-val" style="color:var(--green-light);font-size:18px;font-weight:700">@Model.PriceIndividual.ToString("N0") đ<span style="font-size:13px;color:var(--text-muted);font-weight:400">/người</span></div>
+                    </div>
+                    <div class="vt-detail-row">
+                        <div class="vt-detail-key">👥 Giá đoàn (≥10 người)</div>
+                        <div class="vt-detail-val" style="color:var(--orange);font-size:18px;font-weight:700">@Model.PriceGroup.ToString("N0") đ<span style="font-size:13px;color:var(--text-muted);font-weight:400">/người</span></div>
+                    </div>
+
+                    <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap">
+                        <a asp-controller="Bookings" asp-action="Create" asp-route-tourId="@Model.Id"
+                           class="vt-btn vt-btn-primary" style="flex:1">✈️ Đặt Tour Này</a>
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="vt-btn vt-btn-outline">✏️ Chỉnh Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@Model.Id" class="vt-btn vt-btn-danger">🗑️ Xóa</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div>
+                <!-- Price calc -->
+                <div class="vt-summary-card" style="margin-bottom:20px">
+                    <div class="vt-summary-title">💰 Tính Giá Tour</div>
+                    <div class="vt-form-group">
+                        <label>Số lượng khách</label>
+                        <input type="number" id="calcPeople" class="vt-input" min="1" max="500" value="2" />
+                    </div>
+                    <div class="vt-price-type-grid">
+                        <label class="vt-price-type-card selected" id="ptIndividual">
+                            <input type="radio" name="calcType" value="individual" checked style="display:none" />
+                            <div class="icon">👤</div>
+                            <div>
+                                <div class="label">Cá nhân</div>
+                                <div class="price">@Model.PriceIndividual.ToString("N0")đ</div>
+                            </div>
+                        </label>
+                        <label class="vt-price-type-card" id="ptGroup">
+                            <input type="radio" name="calcType" value="group" style="display:none" />
+                            <div class="icon">👥</div>
+                            <div>
+                                <div class="label">Đoàn ≥10</div>
+                                <div class="price">@Model.PriceGroup.ToString("N0")đ</div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="vt-total-row" style="margin-top:12px">
+                        <div class="label">Tổng tiền</div>
+                        <div class="amount" id="calcTotal">@((Model.PriceIndividual * 2).ToString("N0"))đ</div>
+                    </div>
+                    <a asp-controller="Bookings" asp-action="Create" asp-route-tourId="@Model.Id"
+                       class="vt-btn vt-btn-primary vt-btn-wide" style="margin-top:16px">✈️ Đặt Ngay</a>
+                </div>
+
+                <!-- Oracle Info -->
+                <div class="vt-oracle-panel">
+                    <div class="vt-oracle-panel-header">
+                        <div class="vt-oracle-title" style="font-size:13px">🗄️ Oracle Database</div>
+                        <span class="vt-badge vt-badge-orange" style="font-size:11px">TOURS Table</span>
+                    </div>
+                    <div class="vt-oracle-body">
+                        <div class="vt-oracle-log">
+                            <div class="vt-log-line info"><span class="tm">-- </span> SELECT * FROM TOURS WHERE ID=@Model.Id</div>
+                            <div class="vt-log-line ok"><span class="tm">-- </span> 1 row fetched [OK]</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    const priceInd = @Model.PriceIndividual;
+    const priceGrp = @Model.PriceGroup;
+    const fmt = v => new Intl.NumberFormat('vi-VN').format(v) + 'đ';
+    const calcEl = document.getElementById('calcTotal');
+    const peopleEl = document.getElementById('calcPeople');
+    let isGroup = false;
+
+    function updateCalc() {
+        const p = Math.max(1, parseInt(peopleEl.value) || 1);
+        const price = isGroup ? priceGrp : priceInd;
+        calcEl.textContent = fmt(price * p);
+    }
+
+    document.querySelectorAll('.vt-price-type-card').forEach(c => {
+        c.addEventListener('click', () => {
+            document.querySelectorAll('.vt-price-type-card').forEach(x => x.classList.remove('selected'));
+            c.classList.add('selected');
+            isGroup = c.querySelector('input').value === 'group';
+            updateCalc();
+        });
+    });
+    peopleEl.addEventListener('input', updateCalc);
+</script>
+}

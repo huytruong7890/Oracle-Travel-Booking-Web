@@ -1,0 +1,394 @@
+F:\webtour\bin\Debug\net10.0\appsettings.Development.json
+F:\webtour\bin\Debug\net10.0\appsettings.json
+F:\webtour\bin\Debug\net10.0\webtour.staticwebassets.runtime.json
+F:\webtour\bin\Debug\net10.0\webtour.staticwebassets.endpoints.json
+F:\webtour\bin\Debug\net10.0\webtour.exe
+F:\webtour\bin\Debug\net10.0\webtour.deps.json
+F:\webtour\bin\Debug\net10.0\webtour.runtimeconfig.json
+F:\webtour\bin\Debug\net10.0\webtour.dll
+F:\webtour\bin\Debug\net10.0\webtour.pdb
+F:\webtour\bin\Debug\net10.0\Humanizer.dll
+F:\webtour\bin\Debug\net10.0\Microsoft.Build.Framework.dll
+F:\webtour\bin\Debug\net10.0\Microsoft.CodeAnalysis.dll
+F:\webtour\bin\Debug\net10.0\Microsoft.CodeAnalysis.CSharp.dll
+F:\webtour\bin\Debug\net10.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+F:\webtour\bin\Debug\net10.0\Microsoft.CodeAnalysis.Workspaces.dll
+F:\webtour\bin\Debug\net10.0\Microsoft.CodeAnalysis.ExternalAccess.RazorCompiler.dll
+F:\webtour\bin\Debug\net10.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+F:\webtour\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.dll
+F:\webtour\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+F:\webtour\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Design.dll
+F:\webtour\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Relational.dll
+F:\webtour\bin\Debug\net10.0\Microsoft.Extensions.DependencyModel.dll
+F:\webtour\bin\Debug\net10.0\Microsoft.VisualStudio.SolutionPersistence.dll
+F:\webtour\bin\Debug\net10.0\Mono.TextTemplating.dll
+F:\webtour\bin\Debug\net10.0\Newtonsoft.Json.dll
+F:\webtour\bin\Debug\net10.0\Oracle.EntityFrameworkCore.dll
+F:\webtour\bin\Debug\net10.0\Oracle.ManagedDataAccess.dll
+F:\webtour\bin\Debug\net10.0\System.CodeDom.dll
+F:\webtour\bin\Debug\net10.0\System.Composition.AttributedModel.dll
+F:\webtour\bin\Debug\net10.0\System.Composition.Convention.dll
+F:\webtour\bin\Debug\net10.0\System.Composition.Hosting.dll
+F:\webtour\bin\Debug\net10.0\System.Composition.Runtime.dll
+F:\webtour\bin\Debug\net10.0\System.Composition.TypedParts.dll
+F:\webtour\bin\Debug\net10.0\System.Configuration.ConfigurationManager.dll
+F:\webtour\bin\Debug\net10.0\System.Diagnostics.PerformanceCounter.dll
+F:\webtour\bin\Debug\net10.0\System.DirectoryServices.Protocols.dll
+F:\webtour\bin\Debug\net10.0\System.Security.Cryptography.ProtectedData.dll
+F:\webtour\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.resources.dll
+F:\webtour\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.resources.dll
+F:\webtour\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.resources.dll
+F:\webtour\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.resources.dll
+F:\webtour\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.resources.dll
+F:\webtour\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.resources.dll
+F:\webtour\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.resources.dll
+F:\webtour\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.resources.dll
+F:\webtour\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+F:\webtour\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.resources.dll
+F:\webtour\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.resources.dll
+F:\webtour\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+F:\webtour\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+F:\webtour\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\webtour\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\webtour\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\webtour\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\webtour\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\webtour\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\webtour\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\webtour\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\webtour\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\webtour\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\webtour\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\webtour\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\webtour\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+F:\webtour\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+F:\webtour\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+F:\webtour\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+F:\webtour\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+F:\webtour\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+F:\webtour\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+F:\webtour\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+F:\webtour\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+F:\webtour\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+F:\webtour\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+F:\webtour\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+F:\webtour\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+F:\webtour\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+F:\webtour\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+F:\webtour\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
+F:\webtour\bin\Debug\net10.0\runtimes\linux\lib\net8.0\System.DirectoryServices.Protocols.dll
+F:\webtour\bin\Debug\net10.0\runtimes\osx\lib\net8.0\System.DirectoryServices.Protocols.dll
+F:\webtour\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.DirectoryServices.Protocols.dll
+F:\webtour\obj\Debug\net10.0\webtour.csproj.AssemblyReference.cache
+F:\webtour\obj\Debug\net10.0\rpswa.dswa.cache.json
+F:\webtour\obj\Debug\net10.0\webtour.GeneratedMSBuildEditorConfig.editorconfig
+F:\webtour\obj\Debug\net10.0\webtour.AssemblyInfoInputs.cache
+F:\webtour\obj\Debug\net10.0\webtour.AssemblyInfo.cs
+F:\webtour\obj\Debug\net10.0\webtour.csproj.CoreCompileInputs.cache
+F:\webtour\obj\Debug\net10.0\webtour.MvcApplicationPartsAssemblyInfo.cache
+F:\webtour\obj\Debug\net10.0\webtour.RazorAssemblyInfo.cache
+F:\webtour\obj\Debug\net10.0\webtour.RazorAssemblyInfo.cs
+F:\webtour\obj\Debug\net10.0\rjimswa.dswa.cache.json
+F:\webtour\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+F:\webtour\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+F:\webtour\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+F:\webtour\obj\Debug\net10.0\scopedcss\bundle\webtour.styles.css
+F:\webtour\obj\Debug\net10.0\scopedcss\projectbundle\webtour.bundle.scp.css
+F:\webtour\obj\Debug\net10.0\compressed\n5sqzvyw2g-{0}-61n19gt1b8-61n19gt1b8.gz
+F:\webtour\obj\Debug\net10.0\compressed\yef0xwuyf1-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
+F:\webtour\obj\Debug\net10.0\compressed\74qkka4jun-{0}-bqjiyaj88i-bqjiyaj88i.gz
+F:\webtour\obj\Debug\net10.0\compressed\4nzqb90cyc-{0}-c2jlpeoesf-c2jlpeoesf.gz
+F:\webtour\obj\Debug\net10.0\compressed\5c81ps7o4g-{0}-erw9l3u2r3-erw9l3u2r3.gz
+F:\webtour\obj\Debug\net10.0\compressed\ntpwg0ozl0-{0}-aexeepp0ev-aexeepp0ev.gz
+F:\webtour\obj\Debug\net10.0\compressed\j15mov5mhy-{0}-d7shbmvgxk-d7shbmvgxk.gz
+F:\webtour\obj\Debug\net10.0\compressed\uj79kg2dbl-{0}-ausgxo2sd3-ausgxo2sd3.gz
+F:\webtour\obj\Debug\net10.0\compressed\r17ib9lkv9-{0}-k8d9w2qqmf-k8d9w2qqmf.gz
+F:\webtour\obj\Debug\net10.0\compressed\g5nzv9iy7e-{0}-cosvhxvwiu-cosvhxvwiu.gz
+F:\webtour\obj\Debug\net10.0\compressed\8o55eekan7-{0}-ub07r2b239-ub07r2b239.gz
+F:\webtour\obj\Debug\net10.0\compressed\otxobpbj9d-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+F:\webtour\obj\Debug\net10.0\compressed\i5vaajaacr-{0}-b7pk76d08c-b7pk76d08c.gz
+F:\webtour\obj\Debug\net10.0\compressed\30hwnkqo33-{0}-fsbi9cje9m-fsbi9cje9m.gz
+F:\webtour\obj\Debug\net10.0\compressed\gycohtvmcp-{0}-rzd6atqjts-rzd6atqjts.gz
+F:\webtour\obj\Debug\net10.0\compressed\2mcrwgg3vg-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+F:\webtour\obj\Debug\net10.0\compressed\cuugl7lm4n-{0}-dxx9fxp4il-dxx9fxp4il.gz
+F:\webtour\obj\Debug\net10.0\compressed\tyk9amtqlv-{0}-jd9uben2k1-jd9uben2k1.gz
+F:\webtour\obj\Debug\net10.0\compressed\vyu71omem4-{0}-khv3u5hwcm-khv3u5hwcm.gz
+F:\webtour\obj\Debug\net10.0\compressed\tdd12txun9-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+F:\webtour\obj\Debug\net10.0\compressed\79f8vbb1ka-{0}-lcd1t2u6c8-lcd1t2u6c8.gz
+F:\webtour\obj\Debug\net10.0\compressed\r0xwnwe3v4-{0}-c2oey78nd0-c2oey78nd0.gz
+F:\webtour\obj\Debug\net10.0\compressed\nj88fipyef-{0}-tdbxkamptv-tdbxkamptv.gz
+F:\webtour\obj\Debug\net10.0\compressed\n5yqgmjvee-{0}-j5mq2jizvt-j5mq2jizvt.gz
+F:\webtour\obj\Debug\net10.0\compressed\3dah4tampq-{0}-06098lyss8-06098lyss8.gz
+F:\webtour\obj\Debug\net10.0\compressed\0pl3axx420-{0}-nvvlpmu67g-nvvlpmu67g.gz
+F:\webtour\obj\Debug\net10.0\compressed\tb7oroukps-{0}-s35ty4nyc5-s35ty4nyc5.gz
+F:\webtour\obj\Debug\net10.0\compressed\b5avcvzs8d-{0}-pj5nd1wqec-pj5nd1wqec.gz
+F:\webtour\obj\Debug\net10.0\compressed\zulr38ukrk-{0}-46ein0sx1k-46ein0sx1k.gz
+F:\webtour\obj\Debug\net10.0\compressed\bcdus453qo-{0}-v0zj4ognzu-v0zj4ognzu.gz
+F:\webtour\obj\Debug\net10.0\compressed\b7t08yoc40-{0}-37tfw0ft22-37tfw0ft22.gz
+F:\webtour\obj\Debug\net10.0\compressed\39i3z1oj0h-{0}-hrwsygsryq-hrwsygsryq.gz
+F:\webtour\obj\Debug\net10.0\compressed\hn150891zw-{0}-pk9g2wxc8p-pk9g2wxc8p.gz
+F:\webtour\obj\Debug\net10.0\compressed\yetnpyua5k-{0}-ft3s53vfgj-ft3s53vfgj.gz
+F:\webtour\obj\Debug\net10.0\compressed\l5g8jnanu6-{0}-6cfz1n2cew-6cfz1n2cew.gz
+F:\webtour\obj\Debug\net10.0\compressed\5i1532qp4w-{0}-6pdc2jztkx-6pdc2jztkx.gz
+F:\webtour\obj\Debug\net10.0\compressed\1nhijwrgql-{0}-493y06b0oq-493y06b0oq.gz
+F:\webtour\obj\Debug\net10.0\compressed\wnaafdu1g2-{0}-iovd86k7lj-iovd86k7lj.gz
+F:\webtour\obj\Debug\net10.0\compressed\h288bsqi10-{0}-vr1egmr9el-vr1egmr9el.gz
+F:\webtour\obj\Debug\net10.0\compressed\48hl1bo6uv-{0}-kbrnm935zg-kbrnm935zg.gz
+F:\webtour\obj\Debug\net10.0\compressed\yorcm5d8fw-{0}-jj8uyg4cgr-jj8uyg4cgr.gz
+F:\webtour\obj\Debug\net10.0\compressed\iu7xnv5y6q-{0}-y7v9cxd14o-y7v9cxd14o.gz
+F:\webtour\obj\Debug\net10.0\compressed\2y3j6smgv4-{0}-notf2xhcfb-notf2xhcfb.gz
+F:\webtour\obj\Debug\net10.0\compressed\3llsnayw0f-{0}-h1s4sie4z3-h1s4sie4z3.gz
+F:\webtour\obj\Debug\net10.0\compressed\v6odrmfr10-{0}-63fj8s7r0e-63fj8s7r0e.gz
+F:\webtour\obj\Debug\net10.0\compressed\xa3sls6fru-{0}-0j3bgjxly4-0j3bgjxly4.gz
+F:\webtour\obj\Debug\net10.0\compressed\t83n2vb8z5-{0}-47otxtyo56-47otxtyo56.gz
+F:\webtour\obj\Debug\net10.0\compressed\929qbg476s-{0}-4v8eqarkd7-4v8eqarkd7.gz
+F:\webtour\obj\Debug\net10.0\compressed\6dp8vngnt4-{0}-356vix0kms-356vix0kms.gz
+F:\webtour\obj\Debug\net10.0\compressed\3nrcta1u53-{0}-83jwlth58m-83jwlth58m.gz
+F:\webtour\obj\Debug\net10.0\compressed\s93hxwdnkx-{0}-mrlpezrjn3-mrlpezrjn3.gz
+F:\webtour\obj\Debug\net10.0\compressed\y1t8b5aa2r-{0}-lzl9nlhx6b-lzl9nlhx6b.gz
+F:\webtour\obj\Debug\net10.0\compressed\90xsgnngib-{0}-ag7o75518u-ag7o75518u.gz
+F:\webtour\obj\Debug\net10.0\compressed\esxjlzevo6-{0}-x0q3zqp4vz-x0q3zqp4vz.gz
+F:\webtour\obj\Debug\net10.0\compressed\4kguzjt60l-{0}-0i3buxo5is-0i3buxo5is.gz
+F:\webtour\obj\Debug\net10.0\compressed\1wsnph21js-{0}-o1o13a6vjx-o1o13a6vjx.gz
+F:\webtour\obj\Debug\net10.0\compressed\11urufsep2-{0}-ttgo8qnofa-ttgo8qnofa.gz
+F:\webtour\obj\Debug\net10.0\compressed\7yu6fb3uer-{0}-2z0ns9nrw6-2z0ns9nrw6.gz
+F:\webtour\obj\Debug\net10.0\compressed\kjky42ayv8-{0}-muycvpuwrr-muycvpuwrr.gz
+F:\webtour\obj\Debug\net10.0\compressed\3vr2s0l3kk-{0}-87fc7y1x7t-87fc7y1x7t.gz
+F:\webtour\obj\Debug\net10.0\compressed\deecpym4xy-{0}-mlv21k5csn-mlv21k5csn.gz
+F:\webtour\obj\Debug\net10.0\compressed\nn6isbhy64-{0}-2zo0hv41x0-2zo0hv41x0.gz
+F:\webtour\obj\Debug\net10.0\compressed\46n2p4679i-{0}-2zo0hv41x0-2zo0hv41x0.gz
+F:\webtour\obj\Debug\net10.0\staticwebassets.build.json
+F:\webtour\obj\Debug\net10.0\staticwebassets.build.json.cache
+F:\webtour\obj\Debug\net10.0\staticwebassets.development.json
+F:\webtour\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+F:\webtour\obj\Debug\net10.0\swae.build.ex.cache
+F:\webtour\obj\Debug\net10.0\webtour.csproj.Up2Date
+F:\webtour\obj\Debug\net10.0\webtour.dll
+F:\webtour\obj\Debug\net10.0\refint\webtour.dll
+F:\webtour\obj\Debug\net10.0\webtour.pdb
+F:\webtour\obj\Debug\net10.0\webtour.genruntimeconfig.cache
+F:\webtour\obj\Debug\net10.0\ref\webtour.dll
+f:\webtour\obj\Debug\net10.0\compressed\k2fcns2f0b-{0}-undnk0rdrt-undnk0rdrt.gz
+f:\webtour\obj\Debug\net10.0\compressed\uyleu2q1k4-{0}-w77kp2e6rm-w77kp2e6rm.gz
+f:\tour du lich\bin\Debug\net10.0\appsettings.Development.json
+f:\tour du lich\bin\Debug\net10.0\appsettings.json
+f:\tour du lich\bin\Debug\net10.0\webtour.staticwebassets.runtime.json
+f:\tour du lich\bin\Debug\net10.0\webtour.staticwebassets.endpoints.json
+f:\tour du lich\bin\Debug\net10.0\webtour.exe
+f:\tour du lich\bin\Debug\net10.0\webtour.deps.json
+f:\tour du lich\bin\Debug\net10.0\webtour.runtimeconfig.json
+f:\tour du lich\bin\Debug\net10.0\webtour.dll
+f:\tour du lich\bin\Debug\net10.0\webtour.pdb
+f:\tour du lich\bin\Debug\net10.0\Humanizer.dll
+f:\tour du lich\bin\Debug\net10.0\Microsoft.Build.Framework.dll
+f:\tour du lich\bin\Debug\net10.0\Microsoft.CodeAnalysis.dll
+f:\tour du lich\bin\Debug\net10.0\Microsoft.CodeAnalysis.CSharp.dll
+f:\tour du lich\bin\Debug\net10.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+f:\tour du lich\bin\Debug\net10.0\Microsoft.CodeAnalysis.Workspaces.dll
+f:\tour du lich\bin\Debug\net10.0\Microsoft.CodeAnalysis.ExternalAccess.RazorCompiler.dll
+f:\tour du lich\bin\Debug\net10.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+f:\tour du lich\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.dll
+f:\tour du lich\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+f:\tour du lich\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Design.dll
+f:\tour du lich\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Relational.dll
+f:\tour du lich\bin\Debug\net10.0\Microsoft.Extensions.DependencyModel.dll
+f:\tour du lich\bin\Debug\net10.0\Microsoft.VisualStudio.SolutionPersistence.dll
+f:\tour du lich\bin\Debug\net10.0\Mono.TextTemplating.dll
+f:\tour du lich\bin\Debug\net10.0\Newtonsoft.Json.dll
+f:\tour du lich\bin\Debug\net10.0\Oracle.EntityFrameworkCore.dll
+f:\tour du lich\bin\Debug\net10.0\Oracle.ManagedDataAccess.dll
+f:\tour du lich\bin\Debug\net10.0\System.CodeDom.dll
+f:\tour du lich\bin\Debug\net10.0\System.Composition.AttributedModel.dll
+f:\tour du lich\bin\Debug\net10.0\System.Composition.Convention.dll
+f:\tour du lich\bin\Debug\net10.0\System.Composition.Hosting.dll
+f:\tour du lich\bin\Debug\net10.0\System.Composition.Runtime.dll
+f:\tour du lich\bin\Debug\net10.0\System.Composition.TypedParts.dll
+f:\tour du lich\bin\Debug\net10.0\System.Configuration.ConfigurationManager.dll
+f:\tour du lich\bin\Debug\net10.0\System.Diagnostics.PerformanceCounter.dll
+f:\tour du lich\bin\Debug\net10.0\System.DirectoryServices.Protocols.dll
+f:\tour du lich\bin\Debug\net10.0\System.Security.Cryptography.ProtectedData.dll
+f:\tour du lich\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.resources.dll
+f:\tour du lich\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.resources.dll
+f:\tour du lich\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.resources.dll
+f:\tour du lich\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.resources.dll
+f:\tour du lich\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.resources.dll
+f:\tour du lich\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.resources.dll
+f:\tour du lich\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.resources.dll
+f:\tour du lich\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.resources.dll
+f:\tour du lich\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+f:\tour du lich\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.resources.dll
+f:\tour du lich\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.resources.dll
+f:\tour du lich\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+f:\tour du lich\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+f:\tour du lich\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+f:\tour du lich\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+f:\tour du lich\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+f:\tour du lich\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+f:\tour du lich\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+f:\tour du lich\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+f:\tour du lich\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+f:\tour du lich\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+f:\tour du lich\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+f:\tour du lich\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+f:\tour du lich\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+f:\tour du lich\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+f:\tour du lich\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+f:\tour du lich\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+f:\tour du lich\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+f:\tour du lich\bin\Debug\net10.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+f:\tour du lich\bin\Debug\net10.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+f:\tour du lich\bin\Debug\net10.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+f:\tour du lich\bin\Debug\net10.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+f:\tour du lich\bin\Debug\net10.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+f:\tour du lich\bin\Debug\net10.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+f:\tour du lich\bin\Debug\net10.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+f:\tour du lich\bin\Debug\net10.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+f:\tour du lich\bin\Debug\net10.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+f:\tour du lich\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+f:\tour du lich\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+f:\tour du lich\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
+f:\tour du lich\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
+f:\tour du lich\bin\Debug\net10.0\runtimes\linux\lib\net8.0\System.DirectoryServices.Protocols.dll
+f:\tour du lich\bin\Debug\net10.0\runtimes\osx\lib\net8.0\System.DirectoryServices.Protocols.dll
+f:\tour du lich\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.DirectoryServices.Protocols.dll
+f:\tour du lich\obj\Debug\net10.0\webtour.csproj.AssemblyReference.cache
+f:\tour du lich\obj\Debug\net10.0\rpswa.dswa.cache.json
+f:\tour du lich\obj\Debug\net10.0\webtour.GeneratedMSBuildEditorConfig.editorconfig
+f:\tour du lich\obj\Debug\net10.0\webtour.AssemblyInfoInputs.cache
+f:\tour du lich\obj\Debug\net10.0\webtour.AssemblyInfo.cs
+f:\tour du lich\obj\Debug\net10.0\webtour.csproj.CoreCompileInputs.cache
+f:\tour du lich\obj\Debug\net10.0\webtour.MvcApplicationPartsAssemblyInfo.cache
+f:\tour du lich\obj\Debug\net10.0\webtour.RazorAssemblyInfo.cache
+f:\tour du lich\obj\Debug\net10.0\webtour.RazorAssemblyInfo.cs
+f:\tour du lich\obj\Debug\net10.0\rjimswa.dswa.cache.json
+f:\tour du lich\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+f:\tour du lich\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+f:\tour du lich\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+f:\tour du lich\obj\Debug\net10.0\scopedcss\bundle\webtour.styles.css
+f:\tour du lich\obj\Debug\net10.0\scopedcss\projectbundle\webtour.bundle.scp.css
+f:\tour du lich\obj\Debug\net10.0\compressed\k2fcns2f0b-{0}-undnk0rdrt-undnk0rdrt.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\uyleu2q1k4-{0}-w77kp2e6rm-w77kp2e6rm.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\n5sqzvyw2g-{0}-61n19gt1b8-61n19gt1b8.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\yef0xwuyf1-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\74qkka4jun-{0}-bqjiyaj88i-bqjiyaj88i.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\4nzqb90cyc-{0}-c2jlpeoesf-c2jlpeoesf.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\5c81ps7o4g-{0}-erw9l3u2r3-erw9l3u2r3.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\ntpwg0ozl0-{0}-aexeepp0ev-aexeepp0ev.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\j15mov5mhy-{0}-d7shbmvgxk-d7shbmvgxk.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\uj79kg2dbl-{0}-ausgxo2sd3-ausgxo2sd3.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\r17ib9lkv9-{0}-k8d9w2qqmf-k8d9w2qqmf.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\g5nzv9iy7e-{0}-cosvhxvwiu-cosvhxvwiu.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\8o55eekan7-{0}-ub07r2b239-ub07r2b239.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\otxobpbj9d-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\i5vaajaacr-{0}-b7pk76d08c-b7pk76d08c.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\30hwnkqo33-{0}-fsbi9cje9m-fsbi9cje9m.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\gycohtvmcp-{0}-rzd6atqjts-rzd6atqjts.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\2mcrwgg3vg-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\cuugl7lm4n-{0}-dxx9fxp4il-dxx9fxp4il.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\tyk9amtqlv-{0}-jd9uben2k1-jd9uben2k1.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\vyu71omem4-{0}-khv3u5hwcm-khv3u5hwcm.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\tdd12txun9-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\79f8vbb1ka-{0}-lcd1t2u6c8-lcd1t2u6c8.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\r0xwnwe3v4-{0}-c2oey78nd0-c2oey78nd0.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\nj88fipyef-{0}-tdbxkamptv-tdbxkamptv.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\n5yqgmjvee-{0}-j5mq2jizvt-j5mq2jizvt.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\3dah4tampq-{0}-06098lyss8-06098lyss8.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\0pl3axx420-{0}-nvvlpmu67g-nvvlpmu67g.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\tb7oroukps-{0}-s35ty4nyc5-s35ty4nyc5.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\b5avcvzs8d-{0}-pj5nd1wqec-pj5nd1wqec.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\zulr38ukrk-{0}-46ein0sx1k-46ein0sx1k.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\bcdus453qo-{0}-v0zj4ognzu-v0zj4ognzu.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\b7t08yoc40-{0}-37tfw0ft22-37tfw0ft22.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\39i3z1oj0h-{0}-hrwsygsryq-hrwsygsryq.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\hn150891zw-{0}-pk9g2wxc8p-pk9g2wxc8p.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\yetnpyua5k-{0}-ft3s53vfgj-ft3s53vfgj.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\l5g8jnanu6-{0}-6cfz1n2cew-6cfz1n2cew.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\5i1532qp4w-{0}-6pdc2jztkx-6pdc2jztkx.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\1nhijwrgql-{0}-493y06b0oq-493y06b0oq.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\wnaafdu1g2-{0}-iovd86k7lj-iovd86k7lj.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\h288bsqi10-{0}-vr1egmr9el-vr1egmr9el.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\48hl1bo6uv-{0}-kbrnm935zg-kbrnm935zg.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\yorcm5d8fw-{0}-jj8uyg4cgr-jj8uyg4cgr.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\iu7xnv5y6q-{0}-y7v9cxd14o-y7v9cxd14o.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\2y3j6smgv4-{0}-notf2xhcfb-notf2xhcfb.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\3llsnayw0f-{0}-h1s4sie4z3-h1s4sie4z3.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\v6odrmfr10-{0}-63fj8s7r0e-63fj8s7r0e.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\xa3sls6fru-{0}-0j3bgjxly4-0j3bgjxly4.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\t83n2vb8z5-{0}-47otxtyo56-47otxtyo56.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\929qbg476s-{0}-4v8eqarkd7-4v8eqarkd7.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\6dp8vngnt4-{0}-356vix0kms-356vix0kms.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\3nrcta1u53-{0}-83jwlth58m-83jwlth58m.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\s93hxwdnkx-{0}-mrlpezrjn3-mrlpezrjn3.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\y1t8b5aa2r-{0}-lzl9nlhx6b-lzl9nlhx6b.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\90xsgnngib-{0}-ag7o75518u-ag7o75518u.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\esxjlzevo6-{0}-x0q3zqp4vz-x0q3zqp4vz.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\4kguzjt60l-{0}-0i3buxo5is-0i3buxo5is.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\1wsnph21js-{0}-o1o13a6vjx-o1o13a6vjx.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\11urufsep2-{0}-ttgo8qnofa-ttgo8qnofa.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\7yu6fb3uer-{0}-2z0ns9nrw6-2z0ns9nrw6.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\kjky42ayv8-{0}-muycvpuwrr-muycvpuwrr.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\3vr2s0l3kk-{0}-87fc7y1x7t-87fc7y1x7t.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\deecpym4xy-{0}-mlv21k5csn-mlv21k5csn.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\nn6isbhy64-{0}-2zo0hv41x0-2zo0hv41x0.gz
+f:\tour du lich\obj\Debug\net10.0\compressed\46n2p4679i-{0}-2zo0hv41x0-2zo0hv41x0.gz
+f:\tour du lich\obj\Debug\net10.0\staticwebassets.build.json
+f:\tour du lich\obj\Debug\net10.0\staticwebassets.build.json.cache
+f:\tour du lich\obj\Debug\net10.0\staticwebassets.development.json
+f:\tour du lich\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+f:\tour du lich\obj\Debug\net10.0\swae.build.ex.cache
+f:\tour du lich\obj\Debug\net10.0\webtour.csproj.Up2Date
+f:\tour du lich\obj\Debug\net10.0\webtour.dll
+f:\tour du lich\obj\Debug\net10.0\refint\webtour.dll
+f:\tour du lich\obj\Debug\net10.0\webtour.pdb
+f:\tour du lich\obj\Debug\net10.0\webtour.genruntimeconfig.cache
+f:\tour du lich\obj\Debug\net10.0\ref\webtour.dll

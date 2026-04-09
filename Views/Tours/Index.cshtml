@@ -1,0 +1,153 @@
+@model IEnumerable<webtour.Models.Tour>
+
+@{
+    ViewData["Title"] = "Quản Lý Tour";
+}
+
+<div class="vt-section" style="padding-bottom:80px">
+    <div class="vt-container">
+        <!-- Breadcrumb -->
+        <div class="vt-breadcrumb">
+            <a asp-controller="Home" asp-action="Index">🏠 Trang chủ</a>
+            <span class="sep">›</span>
+            <span class="current">Quản Lý Tour</span>
+        </div>
+
+        <!-- Header -->
+        <div class="vt-page-header">
+            <div>
+                <h1 class="vt-page-title">🗺️ Quản Lý Tour</h1>
+                <p class="vt-page-sub">Danh sách tour du lịch trong hệ thống Oracle Database</p>
+            </div>
+            <a asp-action="Create" class="vt-btn vt-btn-primary">+ Thêm Tour Mới</a>
+        </div>
+
+        <!-- Stats -->
+        <div class="vt-stats-strip">
+            <div class="vt-stat-chip accent">
+                <div class="sc-num">@Model.Count()</div>
+                <div class="sc-lbl">Tổng số tour</div>
+            </div>
+            @if(Model.Any()) {
+                <div class="vt-stat-chip">
+                    <div class="sc-num">@Model.Min(t => t.DurationDays)–@Model.Max(t => t.DurationDays)</div>
+                    <div class="sc-lbl">Ngày (min–max)</div>
+                </div>
+                <div class="vt-stat-chip">
+                    <div class="sc-num">@Model.Min(t => t.PriceIndividual).ToString("N0")đ</div>
+                    <div class="sc-lbl">Giá thấp nhất</div>
+                </div>
+                <div class="vt-stat-chip">
+                    <div class="sc-num">@Model.Max(t => t.PriceIndividual).ToString("N0")đ</div>
+                    <div class="sc-lbl">Giá cao nhất</div>
+                </div>
+            }
+        </div>
+
+        @if (!Model.Any())
+        {
+            <div class="vt-empty">
+                <div class="vt-empty-icon">🗺️</div>
+                <div class="vt-empty-title">Chưa có tour nào</div>
+                <div class="vt-empty-sub">Bắt đầu bằng cách thêm tour du lịch đầu tiên vào hệ thống</div>
+                <a asp-action="Create" class="vt-btn vt-btn-primary" style="margin-top:16px">+ Thêm Tour Đầu Tiên</a>
+            </div>
+        }
+        else
+        {
+            <!-- Tour Grid -->
+            <div class="vt-tour-grid">
+                @foreach (var tour in Model)
+                {
+                    string emoji = tour.Destination switch {
+                        var d when d.Contains("Hạ Long") || d.Contains("Ha Long") => "🏔️",
+                        var d when d.Contains("Đà Nẵng") || d.Contains("Da Nang") => "🌊",
+                        var d when d.Contains("Hội An") || d.Contains("Hoi An")   => "🏮",
+                        var d when d.Contains("Sapa") || d.Contains("Sa Pa")       => "🌿",
+                        var d when d.Contains("Phú Quốc") || d.Contains("Phu Quoc") => "🏝️",
+                        var d when d.Contains("Nha Trang")                          => "🌺",
+                        var d when d.Contains("Đà Lạt") || d.Contains("Da Lat")    => "🌸",
+                        var d when d.Contains("Vũng Tàu")                           => "🏖️",
+                        _ => "✈️"
+                    };
+                    string imgUrl = tour.Destination switch {
+                        var d when d.Contains("Hạ Long") || d.Contains("Ha Long") => "/images/halong_tour.png",
+                        var d when d.Contains("Đà Nẵng") => "/images/danang_hoian_tour.jpg",
+                        var d when d.Contains("Hội An")  => "/images/danang_hoian_tour.jpg",
+                        var d when d.Contains("Sapa") || d.Contains("Sa Pa") => "/images/sapa_tour.jpg",
+                        var d when d.Contains("Phú Quốc") => "/images/phuquoc_tour.jpg",
+                        var d when d.Contains("Đà Lạt") => "/images/dalat_tour.jpg",
+                        var d when d.Contains("Nha Trang") => "/images/nhatrang_tour.jpg",
+                        _ => "/images/halong_tour.png"
+                    };
+                    <div class="vt-tour-card animate-fade-up">
+                        <div class="vt-dest-img-wrap" style="height:180px">
+                            <img src="@imgUrl" alt="@tour.Destination" class="vt-dest-img" loading="lazy" />
+                            <div class="vt-dest-overlay"></div>
+                            <div class="vt-dest-price-chip" style="font-size:12px">⏱ @tour.DurationDays N @tour.DurationNights Đ</div>
+                        </div>
+                        <div class="vt-tour-card-body">
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+                                <span style="font-size:28px">@emoji</span>
+                                <div>
+                                    <div class="vt-tour-name" style="margin-bottom:2px;font-size:17px">@tour.Destination</div>
+                                    <div class="vt-dest-location">📍 Việt Nam · ID: #@tour.Id</div>
+                                </div>
+                            </div>
+                            <div class="vt-tour-meta">
+                                <span class="vt-tour-meta-item">📅 @tour.DurationDays ngày @tour.DurationNights đêm</span>
+                            </div>
+                            <div class="vt-tour-attractions" title="@tour.Attractions">
+                                🗺️ @tour.Attractions
+                            </div>
+                            <div class="vt-price-row">
+                                <div class="vt-price-item">
+                                    <div class="vt-price-label">👤 Cá nhân</div>
+                                    <div class="vt-price-val">@tour.PriceIndividual.ToString("N0")đ</div>
+                                </div>
+                                <div style="width:1px;background:rgba(255,255,255,0.06)"></div>
+                                <div class="vt-price-item">
+                                    <div class="vt-price-label">👥 Đoàn ≥10</div>
+                                    <div class="vt-price-val group">@tour.PriceGroup.ToString("N0")đ</div>
+                                </div>
+                            </div>
+                            <div class="vt-tour-actions">
+                                <a asp-controller="Bookings" asp-action="Create" asp-route-tourId="@tour.Id"
+                                   class="vt-btn vt-btn-primary vt-btn-sm" style="flex:1">✈️ Đặt</a>
+                                <a asp-action="Details" asp-route-id="@tour.Id"
+                                   class="vt-btn vt-btn-outline vt-btn-sm">👁 Xem</a>
+                                <a asp-action="Edit" asp-route-id="@tour.Id"
+                                   class="vt-btn vt-btn-outline vt-btn-sm">✏️</a>
+                                <a asp-action="Delete" asp-route-id="@tour.Id"
+                                   class="vt-btn vt-btn-danger vt-btn-sm">🗑</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            
+            @if (ViewBag.TotalPages > 1)
+            {
+                <div class="vt-pagination" style="display:flex;justify-content:center;gap:8px;margin-top:30px">
+                    @if (ViewBag.CurrentPage > 1)
+                    {
+                        <a asp-action="Index" asp-route-page="@(ViewBag.CurrentPage - 1)" class="vt-btn vt-btn-outline vt-btn-sm">Trước</a>
+                    }
+                    
+                    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                    {
+                        <a asp-action="Index" asp-route-page="@i" 
+                           class="vt-btn vt-btn-sm @(i == ViewBag.CurrentPage ? "vt-btn-primary" : "vt-btn-outline")">
+                            @i
+                        </a>
+                    }
+
+                    @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                    {
+                        <a asp-action="Index" asp-route-page="@(ViewBag.CurrentPage + 1)" class="vt-btn vt-btn-outline vt-btn-sm">Tiếp</a>
+                    }
+                </div>
+            }
+        }
+    </div>
+</div>
