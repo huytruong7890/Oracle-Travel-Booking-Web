@@ -103,7 +103,7 @@ namespace webtour.Controllers
                     var pIsGroup = new Oracle.ManagedDataAccess.Client.OracleParameter("p_is_group", booking.IsGroup);
                     var pTotal = new Oracle.ManagedDataAccess.Client.OracleParameter("p_total_price", Oracle.ManagedDataAccess.Client.OracleDbType.Decimal, System.Data.ParameterDirection.Output);
                     
-                    await _context.Database.ExecuteSqlRawAsync("BEGIN PROC_CALCULATE_PRICE(:p_tour_id, :p_people, :p_is_group, :p_total_price); END;", 
+                    await _context.Database.ExecuteSqlRawAsync("BEGIN PKG_TOUR_LOGIC.calc_price(:p_tour_id, :p_people, :p_is_group, :p_total_price); END;", 
                         pTourId, pPeople, pIsGroup, pTotal);
                     
                     booking.TotalPrice = (decimal)(Oracle.ManagedDataAccess.Types.OracleDecimal)pTotal.Value;
@@ -214,7 +214,7 @@ namespace webtour.Controllers
                     var pIsGroup = new Oracle.ManagedDataAccess.Client.OracleParameter("p_is_group", booking.IsGroup);
                     var pTotal = new Oracle.ManagedDataAccess.Client.OracleParameter("p_total_price", Oracle.ManagedDataAccess.Client.OracleDbType.Decimal, System.Data.ParameterDirection.Output);
                     
-                    await _context.Database.ExecuteSqlRawAsync("BEGIN PROC_CALCULATE_PRICE(:p_tour_id, :p_people, :p_is_group, :p_total_price); END;", 
+                    await _context.Database.ExecuteSqlRawAsync("BEGIN PKG_TOUR_LOGIC.calc_price(:p_tour_id, :p_people, :p_is_group, :p_total_price); END;", 
                         pTourId, pPeople, pIsGroup, pTotal);
                     
                     booking.TotalPrice = (decimal)(Oracle.ManagedDataAccess.Types.OracleDecimal)pTotal.Value;

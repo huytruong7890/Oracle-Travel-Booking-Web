@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "f:\\tour du lich\\webtour.csproj": {}
+    "F:\\tour du lich\\webtour.csproj": {}
   },
   "projects": {
-    "f:\\tour du lich\\webtour.csproj": {
+    "F:\\tour du lich\\webtour.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "f:\\tour du lich\\webtour.csproj",
+        "projectUniqueName": "F:\\tour du lich\\webtour.csproj",
         "projectName": "webtour",
-        "projectPath": "f:\\tour du lich\\webtour.csproj",
+        "projectPath": "F:\\tour du lich\\webtour.csproj",
         "packagesPath": "C:\\Users\\MSI\\.nuget\\packages\\",
-        "outputPath": "f:\\tour du lich\\obj\\",
+        "outputPath": "F:\\tour du lich\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -392,3 +392,4 @@ f:\tour du lich\obj\Debug\net10.0\refint\webtour.dll
 f:\tour du lich\obj\Debug\net10.0\webtour.pdb
 f:\tour du lich\obj\Debug\net10.0\webtour.genruntimeconfig.cache
 f:\tour du lich\obj\Debug\net10.0\ref\webtour.dll
+F:\tour du lich\obj\Debug\net10.0\webtour.sourcelink.json
