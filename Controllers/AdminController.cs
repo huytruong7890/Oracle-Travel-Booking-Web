@@ -3,8 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using webtour.Data;
 using webtour.Models;
 
+using Microsoft.AspNetCore.Authorization;
+
 namespace webtour.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly ApplicationDbContext _context;

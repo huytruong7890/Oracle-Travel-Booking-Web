@@ -3,8 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using webtour.Data;
 using webtour.Models;
 
+using Microsoft.AspNetCore.Authorization;
+
 namespace webtour.Controllers
 {
+    [Authorize]
     public class ToursController : Controller
     {
         private readonly ApplicationDbContext _context;

@@ -1,0 +1,107 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng Nhập – VietTour Oracle</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/viettour.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            background: radial-gradient(circle at top left, #0d1117, #161b22);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            overflow: hidden;
+        }
+        .login-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.6s ease-out;
+        }
+        @@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .logo-box { text-align: center; margin-bottom: 30px; }
+        .vt-logo-main { font-size: 28px; font-weight: 800; color: #fff; display: block; }
+        .vt-logo-sub { color: #0891b2; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; }
+        .form-control {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 12px 16px;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #0891b2;
+            box-shadow: 0 0 0 4px rgba(8, 145, 178, 0.2);
+            color: #fff;
+        }
+        .label-text { color: #8b949e; font-size: 13px; margin-bottom: 8px; display: block; }
+        .btn-login {
+            background: linear-gradient(135deg, #0891b2, #059669);
+            border: none;
+            color: white;
+            padding: 14px;
+            width: 100%;
+            border-radius: 12px;
+            font-weight: 700;
+            margin-top: 10px;
+            transition: transform 0.2s;
+        }
+        .btn-login:hover { transform: scale(1.02); color: white; opacity: 0.9; }
+        .error-msg {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 13px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .footer-text { text-align: center; color: #484f58; font-size: 12px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <div class="logo-box">
+            <span class="vt-logo-main">VietTour</span>
+            <span class="vt-logo-sub">Oracle System</span>
+        </div>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="error-msg">❌ @ViewBag.Error</div>
+        }
+
+        <form asp-action="Login" method="post">
+            <div class="mb-4">
+                <label class="label-text">Tên đăng nhập</label>
+                <input type="text" name="username" class="form-control" placeholder="admin hoặc staff" required autofocus />
+            </div>
+            <div class="mb-4">
+                <label class="label-text">Mật khẩu</label>
+                <input type="password" name="password" class="form-control" placeholder="••••••••" required />
+            </div>
+            <button type="submit" class="btn-login">Đăng Nhập</button>
+        </form>
+
+        <p class="footer-text">© 2026 VietTour Oracle Database 21c XE</p>
+    </div>
+</body>
+</html>

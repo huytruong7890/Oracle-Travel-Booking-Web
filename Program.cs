@@ -5,6 +5,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddAuthentication("CookieAuth")
+    .AddCookie("CookieAuth", config =>
+    {
+        config.Cookie.Name = "User.Cookie";
+        config.LoginPath = "/Account/Login";
+        config.AccessDeniedPath = "/Account/AccessDenied";
+        config.ExpireTimeSpan = TimeSpan.FromHours(8);
+    });
+
 // Kết nối Oracle
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseOracle(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -19,6 +28,7 @@ if (!app.Environment.IsDevelopment()) {
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

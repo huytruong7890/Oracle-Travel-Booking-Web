@@ -53,11 +53,30 @@
             </a>
             <ul class="vt-nav-links">
                 <li><a class="vt-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Home"?"active":"")" asp-controller="Home" asp-action="Index">🏠 Trang Chủ</a></li>
-                <li><a class="vt-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Tours"?"active":"")" asp-controller="Tours" asp-action="Index">🗺️ Quản Lý Tour</a></li>
-                <li><a class="vt-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Bookings"?"active":"")" asp-controller="Bookings" asp-action="Index">📋 Đặt Tour</a></li>
-                <li><a class="vt-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Admin"?"active":"")" asp-controller="Admin" asp-action="Dashboard">📊 Báo Cáo</a></li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li><a class="vt-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Tours"?"active":"")" asp-controller="Tours" asp-action="Index">🗺️ Quản Lý Tour</a></li>
+                    <li><a class="vt-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Bookings"?"active":"")" asp-controller="Bookings" asp-action="Index">📋 Đặt Tour</a></li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li><a class="vt-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString()=="Admin"?"active":"")" asp-controller="Admin" asp-action="Dashboard">📊 Báo Cáo</a></li>
+                    }
+                }
             </ul>
-            <a class="vt-btn-cta" asp-controller="Bookings" asp-action="Create">✈️ Đặt Ngay</a>
+
+            <div style="display: flex; gap: 10px; align-items: center;">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div style="color: #fff; font-size: 14px;">
+                        Chào, <strong style="color: var(--cyan);">@User.FindFirst("FullName")?.Value</strong>
+                    </div>
+                    <a class="vt-btn-cta" style="background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3);" asp-controller="Account" asp-action="Logout">🚪 Thoát</a>
+                }
+                else
+                {
+                    <a class="vt-btn-cta" asp-controller="Account" asp-action="Login">👤 Đăng Nhập</a>
+                }
+            </div>
             <button class="vt-nav-toggle" id="navToggle" onclick="this.closest('.vt-navbar').classList.toggle('open')">
                 <span></span><span></span><span></span>
             </button>

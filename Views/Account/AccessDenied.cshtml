@@ -1,0 +1,14 @@
+@{
+    ViewData["Title"] = "Không có quyền truy cập";
+}
+
+<div class="vt-section">
+    <div class="vt-container" style="text-align: center; padding: 100px 0;">
+        <h1 style="font-size: 80px;">🚫</h1>
+        <h2 style="color: var(--text-main); font-weight: 800; margin-bottom: 20px;">Truy Cập Bị Từ Chối</h2>
+        <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto 30px;">
+            Hệ thống Oracle đã xác thực bạn là <strong>Nhân Viên</strong>. Bạn không có quyền truy cập vào các tính năng Quản trị cao cấp (Doanh thu/Xóa dữ liệu).
+        </p>
+        <a asp-controller="Home" asp-action="Index" class="vt-btn vt-btn-primary">🏠 Quay lại trang chủ</a>
+    </div>
+</div>
